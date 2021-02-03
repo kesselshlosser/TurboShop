@@ -1,0 +1,67 @@
+/*!
+ * Font Awesome Controls
+ * fac.css
+ * Copyright Maxwel D'souza
+ * MIT Licence
+ */
+
+.fac {
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    position: relative;
+    vertical-align: middle;
+    font-size: 1.2em;
+}
+
+.fac a {
+    margin: 0em 1em 0em 0em;
+    padding-left: 1.5em;
+    cursor:pointer;
+    font-weight:inherit;
+    color: #212529;
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 40px;
+    text-align: left;
+}
+
+.fac > a:before,
+.fac > a:after {
+    font-family: 'Font Awesome 5 Free', 'Font Awesome 5 Brands';
+    font-weight: 100;
+	font-size: 1.1rem;
+    position:absolute;
+    left:0;
+}
+
+.fac > a:before { 
+    -webkit-transition: opacity 0.3s ease-in-out;
+    -o-transition: opacity 0.3s ease-in-out;
+    transition: opacity 0.3s ease-in-out;
+}
+/********* Sizes ***********/
+
+.fac-2x {
+    font-size: 2em;
+}
+
+/********* Colors ***********/
+.fac-primary > a:before,
+.fac-primary > a:after {
+    color: #007bff;
+}
+/********* Controls ***********/
+
+.fac-checkbox > a:after { 
+    content: "\f0c8";
+}
+.fac-checkbox > a:focus:after {
+    content: "\f14a"; /* active */
+	font-weight: 600;
+}
+.fac-checkbox > a.selected:after {
+    content: "\f14a"; /* active */
+	font-weight: 600;
+}

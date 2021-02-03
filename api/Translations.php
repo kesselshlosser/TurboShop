@@ -1,0 +1,34 @@
+<?php
+
+require_once('Turbo.php');
+
+class Translations extends Turbo
+{
+	private $vars = array();
+
+	function __construct()
+	{
+		parent::__construct();
+
+        $lang_label = (isset($_SESSION['lang']) ? $_SESSION['lang'] : $this->settings->lang_label);
+        $language   = $this->languages->languages(array('id'=>$this->languages->lang_id));
+        $translations = $this->languages->get_translations(array('lang'=>$language->label));
+		if(!empty($translations))
+		foreach($translations as $result){
+			$this->vars[$result->label] = $result->value;
+        }
+                                
+	}
+
+	public function __get($name)
+	{
+		if($res = parent::__get($name))
+			return $res;
+
+		if(isset($this->vars[$name]))
+			return $this->vars[$name];
+		else
+			return null;
+	}
+
+}

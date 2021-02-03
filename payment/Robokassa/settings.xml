@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module>
+	<name>
+		Робокасса
+	</name>
+	<settings>
+		<variable>login</variable>
+		<name>Логин в робокассе</name>
+	</settings>
+	<settings>
+		<variable>password1</variable>
+		<name>Пароль1</name>
+	</settings>
+	<settings>
+		<variable>password2</variable>
+		<name>Пароль2</name>
+	</settings>
+	<settings>
+		<variable>language</variable>
+		<name>Язык шлюза</name>
+		<options>
+			<name>Русский</name>
+			<value>ru</value>
+		</options>
+		<options>
+			<name>Английский</name>
+			<value>en</value>
+		</options>
+	</settings>
+
+    <settings>
+        <variable>sno</variable>
+        <name>Система налогообложения.</name>
+        <options>
+            <name>общая СН</name>
+            <value>osn</value>
+        </options>
+        <options>
+            <name>упрощенная СН (доходы)</name>
+            <value>usn_income</value>
+        </options>
+        <options>
+            <name>упрощенная СН (доходы минус расходы)</name>
+            <value>usn_income_outcome</value>
+        </options>
+        <options>
+            <name>единый налог на вмененный доход</name>
+            <value>envd</value>
+        </options>
+        <options>
+            <name>единый сельскохозяйственный налог</name>
+            <value>esn</value>
+        </options>
+        <options>
+            <name>патентная СН</name>
+            <value>patent</value>
+        </options>
+    </settings>
+
+    <settings>
+        <variable>tax</variable>
+        <name>НДС</name>
+        <options>
+            <name>без НДС</name>
+            <value>none</value>
+        </options>
+        <options>
+            <name>НДС по ставке 0%</name>
+            <value>vat0</value>
+        </options>
+        <options>
+            <name>НДС чека по ставке 10%</name>
+            <value>vat10</value>
+        </options>
+        <options>
+            <name>НДС чека по ставке 18%</name>
+            <value>vat18</value>
+        </options>
+        <options>
+            <name>НДС чека по расчетной ставке 10/110</name>
+            <value>vat110</value>
+        </options>
+        <options>
+            <name>НДС чека по расчетной ставке 18/118</name>
+            <value>vat118</value>
+        </options>
+        <options>
+            <name>НДС чека по ставке 20%</name>
+            <value>vat20</value>
+        </options>
+        <options>
+            <name>НДС чека по расчетной ставке 20/120</name>
+            <value>vat120</value>
+        </options>
+    </settings>
+</module>

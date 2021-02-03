@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module>
+	<name>
+		PayKeeper
+	</name>
+	<settings>
+		<variable>PAYKEEPER_PAYMENT_FORM_URL</variable>
+		<name>URL для генерации формы оплаты</name>
+	</settings>
+	<settings>
+		<variable>PAYKEEPER_SECRET</variable>
+		<name>Секретное слово</name>
+	</settings>
+</module>

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module>
+	<name>
+		СБЕРБАНК
+	</name>
+	<settings>
+		<variable>sberbank_login</variable>
+		<name>Логин от API</name>
+	</settings>
+	<settings>
+		<variable>sberbank_password</variable>
+		<name>Пароль от API</name>
+	</settings>
+	<settings>
+		<variable>sberbank_server</variable>
+		<name>Адрес сервера</name>
+		<default>https://3dsec.sberbank.ru/payment/rest/</default>
+	</settings>
+</module>

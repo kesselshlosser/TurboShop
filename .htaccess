@@ -1,0 +1,195 @@
+AddDefaultCharset UTF-8
+ErrorDocument 404 /404
+ErrorDocument 401 /password.php
+RewriteEngine on
+
+<IfModule mod_rewrite.c>
+# Check if browser supports WebP images
+RewriteCond %{HTTP_ACCEPT} image/webp
+
+# Check if WebP replacement image exists
+RewriteCond %{DOCUMENT_ROOT}/$1.webp -f
+
+# Serve WebP image instead
+RewriteRule (.+)\.(jpe?g|png)$ $1.webp [T=image/webp,E=REQUEST_image]
+</IfModule>
+
+<IfModule mod_headers.c>
+# Vary: Accept for all the requests to jpeg and png
+Header append Vary Accept env=REQUEST_image
+</IfModule>
+
+<IfModule mod_mime.c>
+  AddType image/webp .webp
+</IfModule>
+
+<FilesMatch "(js|css).gz[1-9]$">
+<IfModule mod_headers.c>
+		Header set Content-Encoding: gzip
+	</IfModule>
+    <FilesMatch "css.gz[1-9]$">
+        ForceType text/css
+    </FilesMatch>
+    <FilesMatch "js.gz[1-9]$">
+        ForceType text/javascript
+    </FilesMatch>
+</FilesMatch>
+
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteRule ^cache/minify/(.+).gz([1-9])$ resize/gzip.php [L,END]
+
+#SMARTY_MINIFY
+<IfModule mod_expires.c>
+    ExpiresActive On
+    ExpiresDefault "access 1 year"
+    ExpiresByType application/javascript "access 1 year"
+    ExpiresByType text/javascript "access 1 year"
+    ExpiresByType text/css "access 1 year"
+    ExpiresByType text/html "access 1 year"
+    ExpiresByType text/x-javascript "access 1 year"
+    ExpiresByType image/gif "access 1 year"
+    ExpiresByType image/jpeg "access 1 year"
+    ExpiresByType image/png "access 1 year"
+    ExpiresByType image/jpg "access 1 year"
+    ExpiresByType image/svg "access 1 year"
+    ExpiresByType image/x-icon "access 1 year"
+    ExpiresByType application/x-shockwave-flash "access 1 year"
+</IfModule>
+
+<IfModule mod_headers.c>
+  <FilesMatch ".(js|css|svg|xml|gz|html)$">
+    Header append Vary: Accept-Encoding
+  </FilesMatch>
+</IfModule>
+
+# Редирект на HTTPS:
+#RewriteCond %{HTTPS} =off
+#RewriteRule (.*) https://%{HTTP_HOST}%{REQUEST_URI} [R=301,L]
+#!!!Внимание, с редиректом вход будет обязательно со слешем в конце /turbo/
+
+# Редирект С www на БЕЗ www:
+#RewriteCond %{HTTP_HOST} ^www\.(.*) [NC]
+#RewriteRule ^(.*)$ http://%1/$1 [R=301,L]
+
+# Редирект с одного домена на другой:
+#RewriteCond %{HTTP_HOST} old.com
+#RewriteRule (.*) http://new.com/$1 [R=301,L]
+
+# 301 Редирект страниц:
+#RewriteRule ^category/old-page.html$ category/new-page [R=301,NC,L]
+
+# Админка теперь по адресу /turbo
+RewriteRule	^admin/?$  turbo [L]
+
+# Каталог товаров
+RewriteRule ^([a-z]{2}/)?catalog/([^/]+)/?$	index.php?module=ProductsView&category=$2&lang_label=$1 [L,QSA]
+RewriteRule ^([a-z]{2}/)?catalog/([^/]+)	index.php?module=ProductsView&category=$2&lang_label=$1 [L,QSA]
+RewriteRule ^([a-z]{2}/)?catalog/?$	index.php?module=ProductsView&lang_label=$1 [L,QSA]
+
+RewriteRule ^([a-z]{2}/)?products/([^/]+)/?$	index.php?module=ProductView&product_url=$2&lang_label=$1 [L,QSA]
+RewriteRule ^([a-z]{2}/)?products/?$	index.php?module=ProductsView&lang_label=$1 [L,QSA]
+
+RewriteRule ^([a-z]{2}/)?brands/([^/]+)/?$	index.php?module=ProductsView&brand=$2&lang_label=$1 [L,QSA]
+RewriteRule ^([a-z]{2}/)?brands/([^/]+)/page_([^/]+)/?$	index.php?module=ProductsView&brand=$2&page=$3&lang_label=$1 [L,QSA]
+RewriteRule ^([a-z]{2}/)?brands/?$	index.php?module=BrandsView&lang_label=$1 [L,QSA]
+
+RewriteRule ^([a-z]{2}/)?featured/?$	index.php?module=ProductsView&mode=featured&lang_label=$1 [L,QSA]
+RewriteRule ^([a-z]{2}/)?new/?$	index.php?module=ProductsView&mode=new&lang_label=$1 [L,QSA]
+RewriteRule ^([a-z]{2}/)?sale/?$	index.php?module=ProductsView&mode=sale&lang_label=$1 [L,QSA]
+RewriteRule ^([a-z]{2}/)?hit/?$	index.php?module=ProductsView&mode=hit&lang_label=$1 [L,QSA]
+
+# Поиск
+RewriteRule ^([a-z]{2}/)?search/([^/]+)/?$	index.php?module=SearchView&keyword=$2&lang_label=$1 [L,QSA]
+RewriteRule ^([a-z]{2}/)?search/?$	index.php?module=SearchView&lang_label=$1 [L,QSA]
+
+# Блог
+RewriteRule ^([a-z]{2}/)?blog/([^/]+)/?$	index.php?module=BlogView&url=$2&lang_label=$1 [L,QSA]
+RewriteRule ^([a-z]{2}/)?blog/?$	index.php?module=BlogView&lang_label=$1 [L,QSA]
+RewriteRule ^([a-z]{2}/)?blog/([^/]+)/?$  index.php?module=BlogView&keyword_blog=$1&lang_label=$1 [L,QSA]
+
+# Статьи
+RewriteRule ^([a-z]{2}/)?article/([^/]+)/?$	index.php?module=ArticlesView&article_url=$2&lang_label=$1 [L,QSA]
+RewriteRule ^([a-z]{2}/)?articles/([^/]+)/?$	index.php?module=ArticlesView&category=$2&lang_label=$1 [L,QSA]
+RewriteRule ^([a-z]{2}/)?articles/?$	index.php?module=ArticlesView&lang_label=$1 [L,QSA]
+
+# Сравнение товаров
+RewriteRule ^([a-z]{2}/)?compare/?$	index.php?module=CompareView&lang_label=$1 [L]
+RewriteRule ^([a-z]{2}/)?compare/([^/]+)/?$	index.php?module=CompareView&product_url=$2&lang_label=$1 [L]
+RewriteRule ^([a-z]{2}/)?compare/remove/([^/]+)/?$	index.php?module=CompareView&remove_product_url=$2&lang_label=$1 [L]
+
+# Список избранного
+RewriteRule ^([a-z]{2}/)?wishlist/?$	index.php?module=WishlistView&lang_label=$1 [L]
+RewriteRule ^([a-z]{2}/)?wishlist/([^/]+)/?$	index.php?module=WishlistView&product_url=$2&lang_label=$1 [L]
+RewriteRule ^([a-z]{2}/)?wishlist/remove/([^/]+)/?$	index.php?module=WishlistView&remove_product_url=$2&lang_label=$1 [L]
+
+# Корзина и заказы
+RewriteRule ^([a-z]{2}/)?cart/?$	index.php?module=CartView&lang_label=$1   [L,QSA]
+RewriteRule ^([a-z]{2}/)?cart/([^/]+)/?$	index.php?module=CartView&add_variant=$2&lang_label=$1  [L,QSA]
+RewriteRule ^([a-z]{2}/)?cart/remove/([^/]+)/?$	index.php?module=CartView&delete_variant=$2&lang_label=$1  [L,QSA]
+RewriteRule ^([a-z]{2}/)?order/([^/]+)/?$	index.php?module=OrderView&url=$2&lang_label=$1  [L,QSA]
+RewriteRule ^([a-z]{2}/)?order/?$	index.php?module=OrderView&lang_label=$1  [L,QSA]
+
+# Для пользователей
+RewriteRule ^([a-z]{2}/)?user/login/?$	index.php?module=LoginView&lang_label=$1  [L,QSA]
+RewriteRule ^([a-z]{2}/)?user/register/?$	index.php?module=RegisterView&lang_label=$1  [L,QSA]
+RewriteRule ^([a-z]{2}/)?user/logout/?$	index.php?module=LoginView&action=logout&lang_label=$1  [L,QSA]
+RewriteRule ^([a-z]{2}/)?user/password_remind/?$	index.php?module=LoginView&action=password_remind&lang_label=$1  [L,QSA]
+RewriteRule ^([a-z]{2}/)?user/password_remind/([0-9a-z]+)/?$	index.php?module=LoginView&action=password_remind&code=$2&lang_label=$1  [L,QSA]
+RewriteRule ^([a-z]{2}/)?user/?$	index.php?module=UserView&lang_label=$1  [L,QSA]
+
+# Google sitemap
+RewriteRule ^([a-z]{2}/)?sitemap.xml?$	sitemap.php?lang_label=$1  [L,QSA]
+
+# Sitemap
+RewriteRule ^([a-z]{2}/)?sitemap/?$    index.php?module=SitemapView&lang_label=$1  [L,QSA]
+
+# XML
+RewriteRule ^export.xml?$	export.php  [L,QSA]
+
+# feedback
+RewriteRule ^([a-z]{2}/)?contact/?$	index.php?module=FeedbackView&lang_label=$1  [L,QSA]
+
+# Статические страницы
+RewriteRule ^([a-z]{2}/?)?/?$	index.php?module=MainView&page_url=&lang_label=$1 [L,QSA]
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^([a-z]{2}/)?([^/]+)/?$ index.php?lang_label=$1&module=PageView&page_url=$2 [L,QSA]
+
+# Статические страницы
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^([^/]*)/?$	index.php?module=PageView&page_url=$1 [L,QSA]
+
+#RewriteRule ^([^/]*)/?$	index.php?module=PageView&page_url=$1 [L,QSA]
+#RewriteRule ^/?$	index.php?module=MainView&page_url= [L,QSA]
+
+# Ресайз картинок статьи
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteRule ^files/articles/preview/(.+) resize/resize.php?file=$1&is_article=1&token=%{QUERY_STRING}
+
+# Ресайз картинок блог
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^files/posts/preview/(.+) resize/resize.php?file=$1&is_post=1&token=%{QUERY_STRING}
+
+# Ресайз картинок бренды
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteRule ^files/brands/preview/(.+) resize/resize.php?file=$1&is_brands=1&token=%{QUERY_STRING}
+
+# Ресайз картинок слайдер
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^files/slides/preview/(.+) resize/resize.php?file=$1&is_banners=1&token=%{QUERY_STRING}
+
+# Ресайз картинок категории
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteRule ^files/categories/preview/(.+) resize/resize.php?file=$1&is_category=1&token=%{QUERY_STRING}
+
+# Ресайз картинок продукты
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^files/products/(.+) resize/resize.php?file=$1&token=%{QUERY_STRING}
