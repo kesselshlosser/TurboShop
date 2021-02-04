@@ -104,7 +104,6 @@
 									</div>
 								</div>
 							</div>
-                            
 						</div>
 					</div>
 					<div class="col-lg-2 col-md-3 col-sm-12">
@@ -119,52 +118,70 @@
 									</label>
 								</div>
 							</div>
-							<div class="activity_of_switch_item">
-								<div class="turbo_switch clearfix">
-									<label class="switch_label">{$btr->general_bestseller|escape}</label>
-									<label class="switch switch-default">
-										<input class="switch-input" name="featured" value="1" type="checkbox" id="featured_checkbox" {if $product->featured}checked=""{/if}/>
-										<span class="switch-label"></span>
-										<span class="switch-handle"></span>
-									</label>
-								</div>
-							</div>
-							<div class="activity_of_switch_item">
-								<div class="turbo_switch clearfix">
-									<label class="switch_label">{$btr->feature_xml|escape}</label>
-									<label class="switch switch-default">
-										<input class="switch-input" name="to_export" value="1" type="checkbox" id="export_checkbox" {if $product->to_export}checked=""{/if}/>
-										<span class="switch-label"></span>
-										<span class="switch-handle"></span>
-									</label>
-								</div>
-							</div>
-							<div class="activity_of_switch_item">
-								<div class="turbo_switch clearfix">
-									<label class="switch_label">{$btr->general_new|escape}</label>
-									<label class="switch switch-default">
-										<input class="switch-input" name="is_new" value="1" type="checkbox" id="new_checkbox" {if $product->is_new}checked=""{/if}/>
-										<span class="switch-label"></span>
-										<span class="switch-handle"></span>
-									</label>
-								</div>
-							</div>
-                            <div class="activity_of_switch_item">
-								<div class="turbo_switch clearfix">
-									<label class="switch_label">{$btr->general_hit|escape}</label>
-									<label class="switch switch-default">
-										<input class="switch-input" name="is_hit" value="1" type="checkbox" id="hit_checkbox" {if $product->is_hit}checked=""{/if}/>
-										<span class="switch-label"></span>
-										<span class="switch-handle"></span>
-									</label>
-								</div>
-							</div>
 						</div>
 					</div>
 				</div>
 			</div>
 		</div>
 	</div>
+	<div class="row">
+        <div class="col-lg-12 col-md-12">
+            <div class="boxed fn_toggle_wrap">
+                <div class="heading_box">
+                    {$btr->general_additional_settings|escape}
+                    <div class="toggle_arrow_wrap fn_toggle_card text-primary">
+                        <a class="btn-minimize" href="javascript:;" ><i class="fa fn_icon_arrow fa-angle-down"></i></a>
+                    </div>
+                </div>
+                <div class="toggle_body_wrap on fn_card">
+                    <div class="permission_block">
+                        <div class="permission_boxes row">
+                            <div class="col-xl-3 col-lg-4 col-md-6">
+                                <div class="permission_box">
+                                    <span>{$btr->general_bestseller|escape}</span>
+                                    <label class="switch switch-default">
+										<input class="switch-input" name="featured" value="1" type="checkbox" id="featured_checkbox" {if $product->featured}checked=""{/if}/>
+                                        <span class="switch-label"></span>
+                                        <span class="switch-handle"></span>
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="col-xl-3 col-lg-4 col-md-6">
+                                <div class="permission_box">
+                                    <span>{$btr->feature_xml|escape}</span>
+                                    <label class="switch switch-default">
+                                        <input class="switch-input" name="to_export" value="1" type="checkbox" id="export_checkbox" {if $product->to_export}checked=""{/if}/>
+                                        <span class="switch-label"></span>
+                                        <span class="switch-handle"></span>
+                                    </label>
+                                </div>
+                            </div>
+							 <div class="col-xl-3 col-lg-4 col-md-6">
+                                <div class="permission_box">
+                                    <span>{$btr->general_new|escape}</span>
+                                    <label class="switch switch-default">
+                                        <input class="switch-input" name="is_new" value="1" type="checkbox" id="new_checkbox" {if $product->is_new}checked=""{/if}/>
+                                        <span class="switch-label"></span>
+                                        <span class="switch-handle"></span>
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="col-xl-3 col-lg-4 col-md-6">
+                                <div class="permission_box">
+                                    <span>{$btr->general_hit|escape}</span>
+                                    <label class="switch switch-default">
+                                        <input class="switch-input" name="is_hit" value="1" type="checkbox" id="hit_checkbox" {if $product->is_hit}checked=""{/if}/>
+                                        <span class="switch-label"></span>
+                                        <span class="switch-handle"></span>
+                                    </label>
+                                 </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 	<div class="row">
 		<div class="col-lg-8 col-md-12 pr-0">
 			<div class="boxed fn_toggle_wrap min_height_270px">

@@ -1790,13 +1790,13 @@ label.switch_label {
     width: 100px;
 }
 .turbo_list .variants_item_name{
-    width: calc(100% - 859px);
+    width: calc(100% - 870px);
 }
 .turbo_list .variants_item_height{
     width: 57px;
 }
 .turbo_list .variants_item_color{
-    width: 120px;
+    width: 140px;
 }
 .turbo_list .variants_item_image{
     width: 57px;
@@ -1811,7 +1811,7 @@ label.switch_label {
     width: 90px;
 }
 .turbo_list .variants_item_amount{
-    width: 117px;
+    width: 100px;
 }
 .turbo_list .variants_item_weight{
     width: 90px;

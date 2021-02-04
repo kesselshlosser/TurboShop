@@ -2539,7 +2539,7 @@ CREATE TABLE `t_seo` (
 
 INSERT INTO `t_seo` (`setting_id`, `name`, `value`) VALUES
 (1, 'am_url', 'www.example.com'),
-(2, 'am_name', 'Интернет-магазин Shop Pro'),
+(2, 'am_name', 'Интернет-магазин Turbo Shop'),
 (3, 'am_phone', '(123) 456-78-90'),
 (4, 'am_email', 'me@example.com'),
 (5, 'category_meta_title', ''),
@@ -2586,7 +2586,7 @@ CREATE TABLE `t_seo_lang` (
 
 INSERT INTO `t_seo_lang` (`name`, `lang_id`, `value`) VALUES
 ('am_email', 1, 'me@example.com'),
-('am_name', 1, 'Интернет-магазин Shop Pro'),
+('am_name', 1, 'Интернет-магазин Turbo Shop'),
 ('am_phone', 1, '(123) 456-78-90'),
 ('am_url', 1, 'www.example.com'),
 ('article_meta_description', 1, ''),
@@ -2614,7 +2614,7 @@ INSERT INTO `t_seo_lang` (`name`, `lang_id`, `value`) VALUES
 ('product_meta_keywords', 1, ''),
 ('product_meta_title', 1, ''),
 ('am_email', 2, 'me@example.com'),
-('am_name', 2, 'Online store Shop Pro'),
+('am_name', 2, 'Online store Turbo Shop'),
 ('am_phone', 2, '(123) 456-78-90'),
 ('am_url', 2, 'www.example.com'),
 ('article_meta_description', 2, ''),
@@ -2642,7 +2642,7 @@ INSERT INTO `t_seo_lang` (`name`, `lang_id`, `value`) VALUES
 ('product_meta_keywords', 2, ''),
 ('product_meta_title', 2, ''),
 ('am_email', 3, 'me@example.com'),
-('am_name', 3, 'Інтернет-магазин Shop Pro'),
+('am_name', 3, 'Інтернет-магазин Turbo Shop'),
 ('am_phone', 3, '(123) 456-78-90'),
 ('am_url', 3, 'www.example.com'),
 ('article_meta_description', 3, ''),
@@ -2754,17 +2754,17 @@ CREATE TABLE `t_settings_lang` (
 INSERT INTO `t_settings_lang` (`name`, `lang_id`, `value`) VALUES
 ('company_name', 1, 'Turbo CMS'),
 ('notify_from_name', 1, 'Администратор'),
-('site_name', 1, 'Интернет-магазин Shop Pro'),
+('site_name', 1, 'Интернет-магазин Turbo Shop'),
 ('units', 1, 'шт'),
 ('weight_units', 1, 'г'),
 ('company_name', 2, 'Turbo CMS'),
 ('notify_from_name', 2, 'Admin'),
-('site_name', 2, 'Online store Shop Pro'),
+('site_name', 2, 'Online store Turbo Shop'),
 ('units', 2, 'шт'),
 ('weight_units', 2, 'g'),
 ('company_name', 3, 'Turbo CMS'),
 ('notify_from_name', 3, 'Адмін'),
-('site_name', 3, 'Інтернет-магазин Shop Pro'),
+('site_name', 3, 'Інтернет-магазин Turbo Shop'),
 ('units', 3, 'шт'),
 ('weight_units', 3, 'г');
 

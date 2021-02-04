@@ -99,10 +99,9 @@
     .product_images_list li{height: 127px;width: 127px;line-height: 127px;}
     .ui_sub_menu--right-arrow:before {right: 96px!important;}
     .ui_sub_menu--right-arrow-cart:before {right: 96px!important;}
-    .variants_listadd{min-width: 900px;}
+    .variants_listadd{min-width: 1150px;}
     .admin_switches {margin-left: 15px;}
     .turbo_list.variants_list{overflow-x: auto !important;overflow-y: visible !important;}
-	.turbo_list .variants_item_name {width: calc(100% - 655px);}
     .quickview_hidden{display: none!important;}
     /* Скрытые блоки списков */
     .variants_toggle,
@@ -154,7 +153,6 @@
 }
 @media only screen and (max-width : 767px) {
     .heading_page {font-size: 22px;line-height: 26px;margin: 10px 0px;}
-	.turbo_list .variants_item_name {width: calc(100% - 555px);}
     #turbo_logo {margin-left: 25%;}
     .boxed_success .heading_box,
     .boxed_warning .heading_box,
@@ -467,5 +465,5 @@
 }
 /* Custom, iPhone Retina */
 @media only screen and (max-width : 382px) {
-	#footer {bottom: -42px;}
+	/* #footer {bottom: -42px;} */
 }
