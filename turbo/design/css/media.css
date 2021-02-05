@@ -471,5 +471,6 @@
 }
 /* Custom, iPhone Retina */
 @media only screen and (max-width : 382px) {
+	.turbo_list_close {display: none;}
 	/* #footer {bottom: -42px;} */
 }
