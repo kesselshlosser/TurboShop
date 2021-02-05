@@ -260,11 +260,22 @@
 </svg>
 {/if}
 {if $svgId == "save_icon"}
-<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:svgjs="http://svgjs.com/svgjs" version="1.1" width="20px" height="20px" x="0" y="0" viewBox="0 0 512 512" style="enable-background:new 0 0 512 512" xml:space="preserve" class=""><g transform="matrix(1,0,0,1,0,0)">
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:svgjs="http://svgjs.com/svgjs" version="1.1" width="20px" height="20px" x="0" y="0" viewBox="0 0 512 512" style="enable-background:new 0 0 512 512" xml:space="preserve" class="">
 	<path d="M166,332h180c8.284,0,15-6.716,15-15s-6.716-15-15-15H166c-8.284,0-15,6.716-15,15S157.716,332,166,332z" fill="currentColor"/>
 	<path d="M166,392h180c8.284,0,15-6.716,15-15s-6.716-15-15-15H166c-8.284,0-15,6.716-15,15S157.716,392,166,392z" fill="currentColor"/>
 	<path d="M507.606,84.394l-80-80C424.793,1.58,420.978,0,417,0H15C6.716,0,0,6.716,0,15v482c0,8.284,6.716,15,15,15     c6.912,0,477.495,0,482,0c8.284,0,15-6.716,15-15V95C512,91.021,510.419,87.206,507.606,84.394z M121,30h210v100H121V30z      M391,482H121V272h270V482z M482,482h-61V257c0-8.284-6.716-15-15-15H106c-8.284,0-15,6.716-15,15v225H30V30h61v115     c0,8.284,6.716,15,15,15h240c8.284,0,15-6.716,15-15V30h49.787L482,101.213V482z" fill="currentColor"/>
 	<path d="M166,452h180c8.284,0,15-6.716,15-15s-6.716-15-15-15H166c-8.284,0-15,6.716-15,15S157.716,452,166,452z" fill="currentColor"/>
+</svg>
+{/if}
+{if $svgId == "icon_eye"}
+<svg class="button__icon button__icon_eye" width="19px" height="13px" viewBox="0 0 19 13" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+	<g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" transform="translate(-1162.000000, -23.000000)">
+		<g class="button__icon-fill" fill="#FFFFFF">
+			<g transform="translate(1162.000000, 17.000000)">
+				<path d="M9.5,6 C5.18181818,6 1.46818182,8.68666667 0,12.5 C1.46818182,16.3133333 5.18181818,19 9.5,19 C13.8181818,19 17.5318182,16.3133333 19,12.5 C17.5318182,8.68666667 13.8181818,6 9.5,6 L9.5,6 Z M9.5,17 C6.98,17 5,15.02 5,12.5 C5,9.98 6.98,8 9.5,8 C12.02,8 14,9.98 14,12.5 C14,15.02 12.02,17 9.5,17 L9.5,17 Z M9.5,10 C8.08333333,10 7,11.0833333 7,12.5 C7,13.9166667 8.08333333,15 9.5,15 C10.9166667,15 12,13.9166667 12,12.5 C12,11.0833333 10.9166667,10 9.5,10 L9.5,10 Z" fill="currentColor"></path>
+			</g>
+		</g>
+	</g>
 </svg>
 {/if}
 {/strip}

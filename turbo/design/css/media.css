@@ -178,7 +178,6 @@
     .turbo_list_translations_num,
     .turbo_list .turbo_list_option,
     .turbo_list_reportstats_categories,
-    .turbo_list_close,
     .turbo_list_comments_btn,
     .turbo_list_usergroups_sale,
     .turbo_list_reportstats_total,
@@ -440,6 +439,13 @@
         line-height: inherit;
         padding: 5px;
 	}
+	.modal-body .btn + .btn {
+        margin-top: 10px;
+    }
+    .modal-body .mx-h {
+        margin-right: 0 !important;
+        margin-left: 0 !important;
+    }
     .translations_scrolls{min-width: 570px;}
     .delivery_type{display: block;margin-bottom: 10px;}
     .delivery_inline_block {display: block;margin-right: 0px;}
