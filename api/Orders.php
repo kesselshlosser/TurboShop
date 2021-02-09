@@ -23,7 +23,7 @@ class Orders extends Turbo
 		$query = $this->db->placehold("SELECT  o.id, o.delivery_id, o.delivery_price, o.separate_delivery,
 										o.payment_method_id, o.paid, o.payment_date, o.closed, o.discount, o.coupon_code, o.coupon_discount, o.weight,
 										o.date, o.user_id, o.name, o.address, o.phone, o.email, o.comment, o.status,
-										o.url, o.total_price, o.note, o.ip
+										o.url, o.total_price, o.note, o.ip, o.lang_id
 										FROM __orders o $where LIMIT 1");
 
 		if($this->db->query($query))
@@ -93,7 +93,7 @@ class Orders extends Turbo
 		$query = $this->db->placehold("SELECT o.id, o.delivery_id, o.delivery_price, o.separate_delivery,
 										o.payment_method_id, o.paid, o.payment_date, o.closed, o.discount, o.coupon_code, o.coupon_discount, o.weight,
 										o.date, o.user_id, o.name, o.address, o.phone, o.email, o.comment, o.status,
-										o.url, o.total_price, o.note
+										o.url, o.total_price, o.note, o.lang_id
 									FROM __orders AS o 
 									LEFT JOIN __orders_labels AS ol ON o.id=ol.order_id 
 									WHERE 1

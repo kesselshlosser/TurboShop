@@ -27,6 +27,24 @@ class Notify extends Turbo
 	{
 		if(!($order = $this->orders->get_order(intval($order_id))) || empty($order->email))
 			return false;
+			
+		/*lang_modify...*/
+        $languages = $this->languages->languages();
+        if (!empty($order->lang_id) && isset($languages[$order->lang_id])) {
+            $cur_lang_id = $this->languages->lang_id();
+            $this->languages->set_lang_id($order->lang_id);
+            $lang_link = '';
+            $f_lang = reset($languages);
+            if ($order->lang_id != $f_lang->id) {
+                $lang_link = $languages[$order->lang_id]->label . '/';
+            }
+            $this->design->assign('lang_link', $lang_link);
+            $this->money->init_currencies();
+            $this->design->assign("currency", $this->money->get_currency());
+            $this->translations->init_translations();
+            $this->design->assign('lang', $this->translations);
+        }
+        /*/lang_modify...*/	
 		
 		$purchases = $this->orders->get_purchases(array('order_id'=>$order->id));
 		$this->design->assign('purchases', $purchases);			
@@ -79,6 +97,22 @@ class Notify extends Turbo
 		$subject = $this->design->get_var('subject');
 		$from = ($this->settings->notify_from_name ? $this->settings->notify_from_name." <".$this->settings->notify_from_email.">" : $this->settings->notify_from_email);
 		$this->email($order->email, $subject, $email_template, $from);
+		
+		/*lang_modify...*/
+        if (!empty($order->lang_id) && isset($languages[$order->lang_id])) {
+            $this->languages->set_lang_id($cur_lang_id);
+            $lang_link = '';
+            $f_lang = reset($languages);
+            if ($order->lang_id != $f_lang->id) {
+                $lang_link = $languages[$order->lang_id]->label . '/';
+            }
+            $this->design->assign('lang_link', $lang_link);
+            $this->money->init_currencies();
+            $this->design->assign("currency", $this->money->get_currency());
+            $this->translations->init_translations();
+            $this->design->assign('lang', $this->translations);
+        }
+        /*/lang_modify...*/
 	}
 
 	public function email_order_admin($order_id)

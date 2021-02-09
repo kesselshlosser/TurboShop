@@ -3,6 +3,8 @@ SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
 
+-- --------------------------------------------------------
+
 --
 -- Структура таблицы `t_articles`
 --
@@ -2176,17 +2178,18 @@ CREATE TABLE `t_orders` (
   `coupon_code` varchar(255) NOT NULL,
   `weight` float(14,2) NOT NULL,
   `separate_delivery` int(1) NOT NULL DEFAULT '0',
-  `modified` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
+  `modified` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `lang_id` int(11) NOT NULL DEFAULT '0'
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 --
 -- Дамп данных таблицы `t_orders`
 --
 
-INSERT INTO `t_orders` (`id`, `delivery_id`, `delivery_price`, `payment_method_id`, `paid`, `payment_date`, `closed`, `date`, `user_id`, `name`, `address`, `phone`, `email`, `comment`, `status`, `url`, `payment_details`, `ip`, `total_price`, `note`, `discount`, `coupon_discount`, `coupon_code`, `weight`, `separate_delivery`, `modified`) VALUES
-(1, 1, '0.00', 2, 1, '0000-00-00 00:00:00', 1, '2021-01-09 02:59:14', 0, 'Сергей Иванов', '', '+1(234) 567-89-01', 'me@example.com', '', 2, 'bd19ef56aea280f3dbd8d5b029c79a59', '', '127.0.0.1', '1771.77', '', '5.00', '312.66', 'TURBOCMS', 324.00, 0, '2021-01-24 01:03:45'),
-(2, 2, '0.00', 3, 0, '0000-00-00 00:00:00', 0, '2021-01-24 03:07:01', 0, 'Даша', '', '+3(890) 123-45-67', 'mail@site.com', '', 0, '821dd3468cb7b0ae9bb19bad008ad982', '', '127.0.0.1', '1309.42', '', '0.00', '0.00', '', 162.00, 0, '2021-01-24 01:09:02'),
-(3, 1, '0.00', 1, 1, '0000-00-00 00:00:00', 1, '2021-01-24 03:34:25', 0, 'Антон', '', '+7(938) 123-45-67', 'anton@site.com', '', 2, '569612bd0aae002d0451345f5e76fe32', '', '127.0.0.1', '1692.00', '', '0.00', '0.00', '', 0.00, 0, '2021-01-24 01:34:52');
+INSERT INTO `t_orders` (`id`, `delivery_id`, `delivery_price`, `payment_method_id`, `paid`, `payment_date`, `closed`, `date`, `user_id`, `name`, `address`, `phone`, `email`, `comment`, `status`, `url`, `payment_details`, `ip`, `total_price`, `note`, `discount`, `coupon_discount`, `coupon_code`, `weight`, `separate_delivery`, `modified`, `lang_id`) VALUES
+(1, 1, '0.00', 2, 1, '0000-00-00 00:00:00', 1, '2021-01-09 02:59:14', 0, 'Сергей Иванов', '', '+1(234) 567-89-01', 'me@example.com', '', 2, 'bd19ef56aea280f3dbd8d5b029c79a59', '', '127.0.0.1', '1771.77', '', '5.00', '312.66', 'TURBOCMS', 324.00, 0, '2021-02-08 22:28:52', 1),
+(2, 2, '0.00', 3, 0, '0000-00-00 00:00:00', 0, '2021-01-24 03:07:01', 0, 'Даша', '', '+3(890) 123-45-67', 'mail@site.com', '', 0, '821dd3468cb7b0ae9bb19bad008ad982', '', '127.0.0.1', '1309.42', '', '0.00', '0.00', '', 162.00, 0, '2021-02-08 22:28:31', 1),
+(3, 1, '0.00', 1, 1, '0000-00-00 00:00:00', 1, '2021-01-24 03:34:25', 0, 'Антон', '', '+7(938) 123-45-67', 'anton@site.com', '', 2, '569612bd0aae002d0451345f5e76fe32', '', '127.0.0.1', '1692.00', '', '0.00', '0.00', '', 0.00, 0, '2021-02-08 22:28:45', 1);
 
 -- --------------------------------------------------------
 

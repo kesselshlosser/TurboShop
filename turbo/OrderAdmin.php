@@ -28,6 +28,7 @@ class OrderAdmin extends Turbo
 			$order->paid = $this->request->post('paid', 'integer');
 			$order->user_id = $this->request->post('user_id', 'integer');
 			$order->separate_delivery = $this->request->post('separate_delivery', 'integer');
+			$order->lang_id = $this->request->post('lang_id', 'integer');
 	 
 	 		if(!$order_labels = $this->request->post('order_labels'))
 	 			$order_labels = array();

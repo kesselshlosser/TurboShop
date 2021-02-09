@@ -31,7 +31,7 @@ class Money extends Turbo
 		$this->init_currencies();
 	}
 	
-	private function init_currencies()
+	public function init_currencies()
 	{
 		$lang_sql = $this->languages->get_query(array('object'=>'currency'));
 		$this->currencies = array();

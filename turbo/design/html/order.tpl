@@ -496,6 +496,14 @@
 						</div>
 					</div>
 					<div class="box_border_buyer">
+						<div class="mb-1">
+                            <div class="heading_label">{$btr->order_language|escape}</div>
+                            <select name="lang_id" class="selectpicker">
+                                {foreach $languages as $l}
+                                    <option value="{$l->id}" {if $l->id == $order->lang_id}selected=""{/if}>{$l->name|escape}</option>
+                                {/foreach}
+                            </select>
+                        </div>
 						<div class="">
 							<div class="form-group">
 								<div class="heading_label">{$btr->order_note|escape}</div>

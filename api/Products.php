@@ -28,7 +28,6 @@ class Products extends Turbo
 	public function get_products($filter = array())
 	{		
 		// По умолчанию
-        $limit = 100;
 		$page = 1;
 		$category_id_filter = '';
 		$brand_id_filter = '';
@@ -48,6 +47,7 @@ class Products extends Turbo
 		$color_filter = '';
 		$variant_join = '';
         $prices = '';
+		$sql_limit = '';
         
         $lang_id  = $this->languages->lang_id();
         if($lang_id)

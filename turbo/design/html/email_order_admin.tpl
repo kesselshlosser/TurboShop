@@ -379,7 +379,7 @@
 												<tr>
 													<td align="center">
 														<a target="_blank" href="{$config->root_url}">
-															<img src="{$config->root_url}/turbo/design/images/logo.png" width="207" align="center" style="display: block; margin: 0 auto" />
+															<img src="{$config->root_url}/design/{$settings->theme}/images/logo.png" width="207" align="center" style="display: block; margin: 0 auto" />
 														</a>
 													</td>
 												</tr>
