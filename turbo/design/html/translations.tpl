@@ -63,21 +63,21 @@
                 <div class="turbo_list_heading turbo_list_translations_name">
                     <span>{$btr->translations_translation|escape}</span>
 					{if $sort == 'lang_asc'}
-						<a href="{url sort=lang_desc}" {if $sort == 'lang_desc'}class="selected"{/if}>{include file='svg_icon.tpl' svgId='sorts'}</a>
+						<a href="{url sort=lang_desc}" class="selected">{include file='svg_icon.tpl' svgId='sorts'}</a>
 					{elseif $sort == 'lang_desc'}
-						<a href="{url sort=lang_asc}" {if $sort == 'lang_asc'}class="selected"{/if}>{include file='svg_icon.tpl' svgId='sorts'}</a>
+						<a href="{url sort=lang_asc}" class="selected">{include file='svg_icon.tpl' svgId='sorts'}</a>
 					{else}
-						<a href="{url sort=lang_desc}" {if $sort == 'lang_desc'}class="selected"{/if}>{include file='svg_icon.tpl' svgId='sorts'}</a>
+						<a href="{url sort=lang_desc}">{include file='svg_icon.tpl' svgId='sorts'}</a>
 					{/if}
                 </div>
                 <div class="turbo_list_heading turbo_list_translations_variable">
                     <span>{$btr->translations_var|escape}</span>
 					{if $sort == 'label_asc'}
-						<a href="{url sort=label_desc}" {if $sort == 'label_desc'}class="selected"{/if}>{include file='svg_icon.tpl' svgId='sorts'}</a>
+						<a href="{url sort=label_desc}" class="selected">{include file='svg_icon.tpl' svgId='sorts'}</a>
 					{elseif $sort == 'label_desc'}
-						<a href="{url sort=label_asc}" {if $sort == 'label_asc'}class="selected"{/if}>{include file='svg_icon.tpl' svgId='sorts'}</a>
+						<a href="{url sort=label_asc}" class="selected">{include file='svg_icon.tpl' svgId='sorts'}</a>
 					{else}
-						<a href="{url sort=label_desc}" {if $sort == 'label_desc'}class="selected"{/if}>{include file='svg_icon.tpl' svgId='sorts'}</a>
+						<a href="{url sort=label_desc}">{include file='svg_icon.tpl' svgId='sorts'}</a>
 					{/if}
                 </div>
                 <div class="turbo_list_heading turbo_list_close"></div>

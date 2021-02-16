@@ -156,7 +156,7 @@
     #turbo_logo {margin-left: 25%;}
     .boxed_success .heading_box,
     .boxed_warning .heading_box,
-    .boxed_attention .heading_box {font-weight: 600;font-size: 16px;line-height: 20px;}
+    .boxed_attention .heading_box {font-weight: 600;font-size: 16px;line-height: 25px;}
     .d_flex{display: block!important;}
     .admin_switches {margin-left: 0px;}
     .turbo_switch{margin-right: 10px;}

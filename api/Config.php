@@ -14,7 +14,7 @@ require_once('Turbo.php');
 
 class Config
 {
-	public $version = '2.4.0';
+	public $version = '2.4.5';
 	
 	// Файл для хранения настроек
 	public $config_file = 'config/config.php';

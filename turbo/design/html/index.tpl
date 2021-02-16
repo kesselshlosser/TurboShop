@@ -112,13 +112,15 @@
 									<svg width="20px" height="20px" viewBox="0 0 510 510"><g id="shopping-cart"><path d="M153,408c-28.05,0-51,22.95-51,51s22.95,51,51,51s51-22.95,51-51S181.05,408,153,408z M0,0v51h51l91.8,193.8L107.1,306    c-2.55,7.65-5.1,17.85-5.1,25.5c0,28.05,22.95,51,51,51h306v-51H163.2c-2.55,0-5.1-2.55-5.1-5.1v-2.551l22.95-43.35h188.7    c20.4,0,35.7-10.2,43.35-25.5L504.9,89.25c5.1-5.1,5.1-7.65,5.1-12.75c0-15.3-10.2-25.5-25.5-25.5H107.1L84.15,0H0z M408,408    c-28.05,0-51,22.95-51,51s22.95,51,51,51s51-22.95,51-51S436.05,408,408,408z" fill="currentColor"/></g></svg>
 								</span>
 								<span class="arrow"></span>
+								{if $new_orders_counter}<span class="menu_counter orders">{$new_orders_counter}</span>{/if}
 							</a>
 							<ul class="fn_submenu_toggle submenu">
 								{if in_array('orders', $manager->permissions)}
 								<li {if $status===0}class="active"{/if} {if in_array($smarty.get.module, array("OrderAdmin"))}{if $order->status==0}class="active"{/if}{/if}>
 									<a class="nav-link" href="index.php?module=OrdersAdmin&status=0">
 										<span class="icon-thumbnail">
-											<i class="icon-basket-loaded icons font-lg d-block mt-4"></i>  
+											<i class="icon-basket-loaded icons font-lg d-block mt-4"></i>
+											{if $new_orders_counter}<span class="menu_counters orders">{$new_orders_counter}</span>{/if}
 										</span>
 										<span class="left_orders_title title">{$btr->general_new_order}</span>
 									</a>
@@ -298,6 +300,7 @@
 									<svg width="20" height="20" viewBox="0 0 23 19" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><g fill="none"><g><path d="M13.23 11.997c1.356-.572 2.425-1.35 3.21-2.334.783-.983 1.175-2.056 1.175-3.215 0-1.159-.392-2.23-1.176-3.215C15.655 2.25 14.586 1.471 13.23.9 11.875.328 10.401.043 8.808.043 7.215.043 5.74.328 4.385.9 3.03 1.47 1.96 2.25 1.176 3.233.392 4.218 0 5.29 0 6.448c0 .993.296 1.927.889 2.803.592.876 1.405 1.614 2.44 2.214-.085.201-.17.384-.257.551a3.167 3.167 0 0 1-.314.482c-.12.154-.214.275-.28.362-.067.088-.176.211-.326.37-.15.158-.246.262-.288.312 0-.008-.017.01-.05.056s-.052.067-.057.063c-.003-.004-.02.017-.05.062l-.043.07-.032.062a.278.278 0 0 0-.024.075.535.535 0 0 0-.006.08c0 .03.003.057.012.082a.418.418 0 0 0 .143.263c.08.067.166.1.257.1h.038c.417-.059.775-.126 1.075-.2a10.511 10.511 0 0 0 3.479-1.602c.75.133 1.484.2 2.202.2 1.592 0 3.067-.285 4.422-.856zm-7-1.045l-.55.388c-.233.158-.492.322-.776.488l.438-1.051-1.214-.7c-.8-.468-1.421-1.018-1.864-1.651-.441-.635-.662-1.294-.662-1.978 0-.85.327-1.647.982-2.39.654-.742 1.536-1.33 2.646-1.764 1.109-.433 2.302-.65 3.578-.65 1.276 0 2.468.217 3.578.65 1.109.435 1.991 1.022 2.646 1.765.655.742.982 1.538.982 2.39 0 .85-.327 1.647-.982 2.389-.655.742-1.537 1.33-2.646 1.764-1.11.434-2.302.65-3.578.65a10.87 10.87 0 0 1-1.914-.175l-.663-.125z" fill="currentColor"/></g><path d="M22.121 13.118c.593-.872.888-1.808.888-2.809 0-1.025-.312-1.985-.938-2.877-.625-.893-1.476-1.635-2.552-2.227a6.418 6.418 0 0 1-.55 5.08c-.559 1-1.36 1.884-2.403 2.652-.967.7-2.068 1.238-3.303 1.614a13.228 13.228 0 0 1-3.866.562c-.25 0-.617-.016-1.1-.05 1.676 1.102 3.645 1.652 5.905 1.652.718 0 1.451-.067 2.202-.2a10.518 10.518 0 0 0 3.478 1.601c.3.075.659.142 1.076.2.1.009.192-.02.275-.087a.462.462 0 0 0 .163-.275c-.004-.05 0-.078.012-.081.012-.004.01-.032-.006-.081l-.025-.076-.03-.062a.591.591 0 0 0-.045-.069.55.55 0 0 0-.05-.063 1.38 1.38 0 0 1-.056-.062 8.891 8.891 0 0 0-.337-.369 4.982 4.982 0 0 1-.326-.369l-.281-.363a3.17 3.17 0 0 1-.313-.482 6.657 6.657 0 0 1-.257-.55c1.034-.6 1.847-1.337 2.44-2.209z" fill="currentColor"/></g></svg>
 								</span>
 								<span class="arrow"></span>
+								{if $all_counter}<span class="menu_counter notification">{$all_counter}</span>{/if}
 							</a>
 							<ul class="fn_submenu_toggle submenu">
 								{if in_array('comments', $manager->permissions)}
@@ -305,6 +308,7 @@
 									<a class="nav-link" href="index.php?module=CommentsAdmin">
 										<span class="icon-thumbnail">
 											<i class="icon-bubbles  icons font-lg d-block mt-4"></i>  
+											{if $new_comments_counter > 0}<span class="menu_counters comments">{$new_comments_counter}</span>{/if}
 										</span>
 										<span class="left_comments_title title">{$btr->general_comments|escape}</span>
 									</a>
@@ -314,7 +318,8 @@
 								<li {if in_array($smarty.get.module, array("FeedbacksAdmin"))}class="active"{/if}>
 									<a class="nav-link" href="index.php?module=FeedbacksAdmin">
 										<span class="icon-thumbnail">
-											<i class="icon-speech icons font-lg d-block mt-4"></i>  
+											<i class="icon-speech icons font-lg d-block mt-4"></i> 
+											{if $new_feedbacks_counter > 0}<span class="menu_counters feedback">{$new_feedbacks_counter}</span>{/if}
 										</span>
 										<span class="left_feedbacks_title title">{$btr->general_feedback|escape}</span>
 									</a>
@@ -324,7 +329,8 @@
 								<li {if in_array($smarty.get.module, array("CallbacksAdmin"))}class="active"{/if}>
 									<a class="nav-link" href="index.php?module=CallbacksAdmin">
 										<span class="icon-thumbnail">
-											<i class="icon-call-out  icons font-lg d-block mt-4"></i>  
+											<i class="icon-call-out  icons font-lg d-block mt-4"></i> 
+											{if $new_callbacks_counter > 0}<span class="menu_counters callbacks">{$new_callbacks_counter}</span>{/if}
 										</span>
 										<span class="left_callbacks_title title">{$btr->callbacks_requests|escape}</span>
 									</a>
@@ -334,7 +340,8 @@
 								<li {if in_array($smarty.get.module, array("SubscribesAdmin"))}class="active"{/if}>
 									<a class="nav-link" href="index.php?module=SubscribesAdmin">
 										<span class="icon-thumbnail">
-											<i class="icon-envelope icons font-lg d-block mt-4"></i>  
+											<i class="icon-envelope icons font-lg d-block mt-4"></i> 
+											{if $new_subscribes_counter > 0}<span class="menu_counters subscribes">{$new_subscribes_counter}</span>{/if}
 										</span>
 										<span class="left_callbacks_title title">{$btr->subscribe_mailing_subscribes|escape}</span>
 									</a>
@@ -697,7 +704,7 @@
 								{if $new_callbacks_counter > 0}
 								<div class="notif_item">
 									<a href="index.php?module=CallbacksAdmin" class="l_notif">
-										<span class="notif_icon boxed_attention">
+										<span class="notif_icon boxed_info">
 											{include file='svg_icon.tpl' svgId='phone'}
 										</span>
 										<span class="notif_title">{$btr->general_callback|escape}</span>
@@ -750,12 +757,7 @@
                             {include file="include_languages.tpl"}
                         </div>
                     </div>
-					<div class="admin_exit hidden-md-up">
-						<a href="{$config->root_url}?logout">
-							<span class="">{$btr->index_exit|escape}</span>
-							{include file='svg_icon.tpl' svgId='exit'}
-						</a>
-					</div>
+					
 				</div>
 			</div>
 		</header>
