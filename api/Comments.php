@@ -44,22 +44,34 @@ class Comments extends Turbo
         if(!empty($filter['type']))
            if($filter['type'] == 'blog')
             {
-                $blog_fields = ', b.url, b.name post';
-                $blog_join = 'INNER JOIN __blog b ON c.object_id=b.id';
+				$lang_id  = $this->languages->lang_id();
+				$px = ($lang_id ? 'l' : 'b');
+				
+				$lang_sql = $this->languages->get_query(array('object'=>'blog', 'px'=>'b'));
+				$blog_fields = ', b.url, '.$px.'.name post';
+                $blog_join = 'INNER JOIN __blog b ON c.object_id=b.id '.$lang_sql->join.'';
             }
 		
 		if(!empty($filter['type']))
            if($filter['type'] == 'article')
             {
-                $articles_fields = ', a.url, a.name article';
-                $articles_join = 'INNER JOIN __articles a ON c.object_id=a.id';
+                $lang_id  = $this->languages->lang_id();
+				$px = ($lang_id ? 'l' : 'a');
+				
+				$lang_sql = $this->languages->get_query(array('object'=>'article', 'px'=>'a'));
+				$articles_fields = ', a.url, '.$px.'.name article';
+                $articles_join = 'INNER JOIN __articles a ON c.object_id=a.id '.$lang_sql->join.'';
             }
 		
 		if(!empty($filter['type']))
            if($filter['type'] == 'product')
             {
-                $products_fields = ', p.url, p.rating, p.votes, p.name product';
-                $products_join = 'INNER JOIN __products p ON c.object_id=p.id';
+                $lang_id  = $this->languages->lang_id();
+				$px = ($lang_id ? 'l' : 'p');
+				
+				$lang_sql = $this->languages->get_query(array('object'=>'product', 'px'=>'p'));
+				$products_fields = ', p.url, p.rating, p.votes, '.$px.'.name product';
+                $products_join = 'INNER JOIN __products p ON c.object_id=p.id '.$lang_sql->join.'';
             }
 		
 		if(isset($filter['limit']))

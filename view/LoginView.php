@@ -76,7 +76,7 @@ class LoginView extends View
 				
 				// Залогиниваемся под пользователем и переходим в кабинет для изменения пароля
 				$_SESSION['user_id'] = $user->id;
-				header('Location: '.$this->config->root_url.'/user');
+				header('Location: '.$this->config->root_url.'/'.$this->language->label.'/user');
 			}
 			return $this->design->fetch('password_remind.tpl');
 		}

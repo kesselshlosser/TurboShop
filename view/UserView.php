@@ -18,7 +18,7 @@ class UserView extends View
 	{
 		if(empty($this->user))
 		{
-			header('Location: '.$this->config->root_url.'/user/login');
+			header('Location: '.$this->config->root_url.'/'.$this->language->label.'/user/login');
 			exit();
 		}
 	
