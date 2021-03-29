@@ -148,7 +148,7 @@
 					{$lang->order_date}
 				</td>
 				<td>
-					{$order->date|date} в
+					{$order->date|date} {$lang->at}
 					{$order->date|time}
 				</td>
 			</tr>

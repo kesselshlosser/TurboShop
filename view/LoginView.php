@@ -20,14 +20,14 @@ class LoginView extends View
 		if($this->request->get('action') == 'logout')
 		{
 			unset($_SESSION['user_id']);
-			header('Location: '.$this->config->root_url);
+			header('Location: '.$this->config->root_url.'/'.$this->language->label);
 			exit();
 		}
         
         // Если авторизован
         elseif ($this->user) 
         {
-            header('Location: '.$this->config->root_url);
+            header('Location: '.$this->config->root_url.'/'.$this->language->label);
             exit();
         }
         
@@ -100,7 +100,7 @@ class LoginView extends View
 					if(!empty($_SESSION['last_visited_page']))
 						header('Location: '.$_SESSION['last_visited_page']);				
 					else
-						header('Location: '.$this->config->root_url);				
+						header('Location: '.$this->config->root_url.'/'.$this->language->label);				
 				}
 				else
 				{
