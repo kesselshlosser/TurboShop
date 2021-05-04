@@ -12,43 +12,6 @@ require_once('Turbo.php');
 
 class Variants extends Turbo
 {
-		public function get_value_variants($filter = array())
-		{        
-			$product_id_filter = '';
-			$instock_filter = '';
-			$group = '';
-			$an = '';
-			
-			if(!empty($filter['product_id']))
-			$product_id_filter = $this->db->placehold('AND product_id in(?@)', (array)$filter['product_id']);
-        
-			if(!empty($filter['in_stock']) && $filter['in_stock'])
-			$instock_filter = $this->db->placehold('AND (stock>0 OR stock IS NULL)');
-			
-            if(!empty($filter['type']) && $filter['type'] == 'name')
-			{$group = $this->db->placehold('GROUP BY name');
-			$an = "AND name <> ''";} 
-			
-            elseif(!empty($filter['type']) && $filter['type'] == 'color')
-			{$group = $this->db->placehold('GROUP BY color');
-			$an = "AND color <> ''";}           
-			
-            if(!$product_id_filter)
-			return array();
-            
-			
-			$query = $this->db->placehold("SELECT name, color, color_code
-			FROM __variants
-			WHERE 1
-			$an
-			$product_id_filter                  
-			$instock_filter
-			$group                
-			");
-			$this->db->query($query);    
-			return $this->db->results();
-		} 
-		
 		/**
 			* Функция возвращает варианты товара
 			* @param	$filter
@@ -60,48 +23,74 @@ class Variants extends Turbo
 			$variant_id_filter = '';
 			$instock_filter = '';
 			
+			$currencies = $this->money->get_currencies();
+			
 			if(!empty($filter['product_id']))
-			$product_id_filter = $this->db->placehold('AND v.product_id in(?@)', (array)$filter['product_id']);
+				$product_id_filter = $this->db->placehold('AND v.product_id in(?@)', (array)$filter['product_id']);
 			
 			if(!empty($filter['id']))
-			$variant_id_filter = $this->db->placehold('AND v.id in(?@)', (array)$filter['id']);
-			
+				$variant_id_filter = $this->db->placehold('AND v.id in(?@)', (array)$filter['id']);
+
 			if(!empty($filter['in_stock']) && $filter['in_stock'])
-			$instock_filter = $this->db->placehold('AND (v.stock>0 OR v.stock IS NULL)');
-			
+				$instock_filter = $this->db->placehold('AND (v.stock>0 OR v.stock IS NULL)');
+
 			if(!$product_id_filter && !$variant_id_filter)
-			return array();
-            
-            $lang_sql = $this->languages->get_query(array('object'=>'variant'));
-					
-            $query = $this->db->placehold("SELECT v.id, v.product_id , v.price, NULLIF(v.compare_price, 0) as compare_price, v.sku, IFNULL(v.stock, ?) as stock, (v.stock IS NULL) as infinity, v.name, v.color, v.color_code, v.images_ids, v.weight, v.position, ".$lang_sql->fields."
-				FROM __variants AS v
-                ".$lang_sql->join."
-				WHERE 
-				1
-				$product_id_filter          
-				$variant_id_filter  
-				$instock_filter 
-				ORDER BY v.position       
-				", $this->settings->max_order_amount);
-		
+				return array();
+			
+			$lang_sql = $this->languages->get_query(array('object'=>'variant'));
+			
+			$query = $this->db->placehold("SELECT v.id, v.product_id, v.price, NULLIF(v.compare_price, 0) as compare_price, v.currency_id, v.sku, IFNULL(v.stock, ?) as stock, (v.stock IS NULL) as infinity, v.name, v.color, v.color_code, v.images_ids, v.weight, v.position, ".$lang_sql->fields."
+						FROM __variants AS v
+						".$lang_sql->join."
+						WHERE 
+						1
+						$product_id_filter          
+						$variant_id_filter
+						$instock_filter
+						ORDER BY v.position       
+						", $this->settings->max_order_amount);
+			
 			$this->db->query($query);	
-			return $this->db->results();
+			
+			$variants = $this->db->results();
+			
+			foreach($variants as &$v) {
+				$v->oprice = $v->price;
+				$v->compare_oprice = $v->compare_price;
+				//делаем пересчет в базовый курс
+				if($v->currency_id > 0) {
+					$v->price = $v->price * $currencies[$v->currency_id]->rate_to / $currencies[$v->currency_id]->rate_from;
+					$v->compare_price = $v->compare_price * $currencies[$v->currency_id]->rate_to / $currencies[$v->currency_id]->rate_from;
+				}
+			}
+			
+			return $variants;
 		}
-		
+				
 		public function get_variant($id)
 		{	
 			if(empty($id))
-			return false;
-        
-            $lang_sql = $this->languages->get_query(array('object'=>'variant'));
+				return false;
 			
-			$query = $this->db->placehold("SELECT v.id, v.product_id , v.price, NULLIF(v.compare_price, 0) as compare_price, v.sku, IFNULL(v.stock, ?) as stock, (v.stock IS NULL) as infinity, v.name, v.color, v.color_code, v.images_ids, v.weight, ".$lang_sql->fields."
-				FROM __variants v ".$lang_sql->join." WHERE v.id=?
-				LIMIT 1", $this->settings->max_order_amount, $id);
+			$lang_sql = $this->languages->get_query(array('object'=>'variant'));
+				
+			$currencies = $this->money->get_currencies();
+				
+			$query = $this->db->placehold("SELECT v.id, v.product_id , v.price, NULLIF(v.compare_price, 0) as compare_price, v.currency_id, v.sku, IFNULL(v.stock, ?) as stock, (v.stock IS NULL) as infinity, v.name, v.color, v.color_code, v.images_ids, v.weight, ".$lang_sql->fields."
+						FROM __variants v ".$lang_sql->join." WHERE id=?
+						LIMIT 1", $this->settings->max_order_amount, $id);
 			
 			$this->db->query($query);	
 			$variant = $this->db->result();
+			
+			$variant->oprice = $variant->price;
+			$variant->compare_oprice = $variant->compare_price;
+			//делаем пересчет в базовый курс
+			if($variant->currency_id > 0) {
+				$variant->price = $variant->price * $currencies[$variant->currency_id]->rate_to / $currencies[$variant->currency_id]->rate_from;
+				$variant->compare_price = $variant->compare_price * $currencies[$variant->currency_id]->rate_to / $currencies[$variant->currency_id]->rate_from;
+			}
+			
 			return $variant;
 		}
 

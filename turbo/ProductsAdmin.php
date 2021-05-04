@@ -305,6 +305,9 @@ class ProductsAdmin extends Turbo
 			foreach($images as $image)
 				$products[$image->product_id]->images[$image->id] = $image;
 		}
+		
+		// Все валюты
+		$this->design->assign('currencies', $this->money->get_currencies(array('enabled'=>1)));
 	 
 		$this->design->assign('products', $products);
 	

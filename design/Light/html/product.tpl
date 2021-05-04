@@ -229,7 +229,13 @@
 					{if !$f->is_color}
 					<tr>
 						<th scope="row">{$f->name}</th>
-						<td>{$f->value}</td>
+						<td>
+							{if $f->url_in_product && $f->in_filter}
+								<a href="{$lang_link}catalog/{$category->url}/{$f->url}-{$f->translit}">{$f->value|escape}</a>
+							{else}
+								{$f->value|escape}
+							{/if}
+						</td>
 					</tr>
 					{/if}
 					{/foreach}

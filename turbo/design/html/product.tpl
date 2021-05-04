@@ -345,12 +345,20 @@
 										<input name="variants[images_ids][]" type="hidden" value="{$variant->images_ids|escape}" />
 									</div>
 									<div class="turbo_list_boding variants_item_price">
-										<div class="heading_label">{$btr->general_price|escape}, {$currency->sign}</div>
-										<input class="variant_input" name="variants[price][]" type="text" value="{$variant->price|escape}"/>
+										<div class="heading_label">{$btr->general_price|escape}, {if isset($currencies[$variant->currency_id])}{$currencies[$variant->currency_id]->sign|escape}{else}{$currency->sign}{/if}</div>
+										<input class="variant_input" name="variants[price][]" type="text" value="{$variant->oprice|escape}"/>
 									</div>
 									<div class="turbo_list_boding variants_item_discount">
-										<div class="heading_label">{$btr->general_old_price|escape}, {$currency->sign}</div>
-										<input class="variant_input text_grey" name="variants[compare_price][]" type="text" value="{$variant->compare_price|escape}"/>
+										<div class="heading_label">{$btr->general_old_price|escape}, {if isset($currencies[$variant->currency_id])}{$currencies[$variant->currency_id]->sign|escape}{else}{$currency->sign}{/if}</div>
+										<input class="variant_input text_grey" name="variants[compare_price][]" type="text" value="{$variant->compare_oprice|escape}"/>
+									</div>
+									<div class="turbo_list_boding variants_item_currency">
+										<div class="heading_label">{$btr->general_currency|escape}</div>
+										<select name="variants[currency_id][]" class="selectpicker">
+											{foreach $currencies as $c}
+												<option value="{$c->id}" {if $c->id == $variant->currency_id}selected=""{/if}>{$c->code|escape}</option>
+											{/foreach}
+										</select>
 									</div>
 									<div class="turbo_list_boding variants_item_weight">
 										<div class="heading_label">{$btr->general_weight|escape}, {$settings->weight_units}</div>
@@ -416,6 +424,14 @@
 										<div class="heading_label">{$btr->general_old_price|escape}, {$currency->sign}</div>
 										<input class="variant_input" name="variants[compare_price][]" type="text" value=""/>
 									</div>
+									<div class="turbo_list_boding variants_item_currency">
+                                        <div class="heading_label">{$btr->general_currency|escape}</div>
+                                        <select name="variants[currency_id][]">
+                                            {foreach $currencies as $c}
+                                                <option value="{$c->id}" >{$c->code|escape}</option>
+                                            {/foreach}
+                                        </select>
+                                    </div>
 									<div class="turbo_list_boding variants_item_weight">
                                         <div class="heading_label">{$btr->general_weight|escape}, {$settings->weight_units}</div>
                                         <input class="variant_input" name="variants[weight][]" type="text" value=""/>
@@ -985,10 +1001,11 @@ $(window).on("load", function() {
 	// New variant
 	var variant = $('.fn_new_row_variant').clone(true);
 	$('.fn_new_row_variant').remove().removeAttr('id');
+	variant.find('.bootstrap-select').replaceWith(function() { return $('select', this); });
 	$('.fn_add_variant').click(function() {
 		if(!$('.variants_wrapper').is('.single_variant'))
 		{
-			$(variant).clone(true).appendTo('.variants_listadd').fadeIn('slow').find("input[name*=variant][name*=name]").focus();
+			$(variant).clone(true).appendTo('.variants_listadd').fadeIn('slow').find("select").selectpicker();
 		}
 		else
 		{

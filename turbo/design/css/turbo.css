@@ -1804,7 +1804,7 @@ label.switch_label {
     width: 100px;
 }
 .turbo_list .variants_item_name{
-    width: calc(100% - 870px);
+    width: calc(100% - 970px);
 }
 .turbo_list .variants_item_height{
     width: 57px;
@@ -2274,6 +2274,10 @@ label.switch_label {
 }
 .turbo_list .turbo_list_order_status{
     width: 120px;
+}
+.turbo_list .turbo_list_url_status{
+    width: 110px;
+    text-align: center;
 }
 .turbo_list .turbo_list_user_number{
     width: 140px;

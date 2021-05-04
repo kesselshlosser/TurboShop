@@ -52,6 +52,7 @@
                 </div>
                 <div class="turbo_list_heading turbo_list_features_name">{$btr->general_name|escape}</div>
                 <div class="turbo_list_heading turbo_list_features_tag"></div>
+				<div class="turbo_list_heading turbo_list_url_status">{$btr->feature_url_in_product_short|escape}</div>
                 <div class="turbo_list_heading turbo_list_status">{$btr->features_in_filter|escape}</div>
                 <div class="turbo_list_heading turbo_list_close"></div>
             </div>
@@ -73,6 +74,14 @@
                             </a>
                         </div>
                         <div class="turbo_list_boding turbo_list_features_tag"></div>
+						<div class="turbo_list_boding turbo_list_url_status">
+							{*url_in_product*}
+							<label class="switch switch-default">
+								<input class="switch-input fn_ajax_action {if $feature->url_in_product}fn_active_class{/if}" data-module="feature" data-action="url_in_product" data-id="{$feature->id}" name="url_in_product" value="1" type="checkbox"  {if $feature->url_in_product}checked=""{/if}/>
+								<span class="switch-label"></span>
+								<span class="switch-handle"></span>
+							</label>
+						</div>
                         <div class="turbo_list_boding turbo_list_status">
                             {*visible*}
                             <label class="switch switch-default">

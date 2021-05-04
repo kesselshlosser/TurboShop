@@ -273,7 +273,7 @@ class View extends Turbo
         @$brand = $this->design->smarty->getTemplateVars('brand');
         @$page = $this->design->smarty->getTemplateVars('page');
         
-        $show_filter_array = array('categories'=>$category->id,'brands'=>$brand->id,'articles_categories'=>$articles_category->id,'pages'=>$page->id);
+        @$show_filter_array = array('categories'=>$category->id,'brands'=>$brand->id,'articles_categories'=>$articles_category->id,'pages'=>$page->id);
         $banner = $this->banners->get_banner($params['group'], true, $show_filter_array);
         if(!empty($banner)) {
             if($items = $this->banners->get_banners_images(array('banner_id'=>$banner->id, 'visible'=>1))) {

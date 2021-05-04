@@ -12,6 +12,7 @@ return array(
     'en_EN' => 'English',
     'es' => 'Español',
     'fa' => 'فارسی',
+    'fi_FI' => 'Suomi',
     'fr_FR' => 'Français',
     'he_IL' => 'Hebrew (Israel)',
     'hr' => 'Hrvatski jezik',
@@ -34,9 +35,10 @@ return array(
     'sv_SE' => 'Svenska',
     'th_TH' => 'ไทย',
     'tr_TR' => 'Türkçe',
-    'uk_UA' => 'Yкраїнська мова',
+    'ua' => 'Українська мова',
     'vi' => 'Tiếng Việt',
     'zh_CN' => '中文 (Zhōngwén), 汉语, 漢語',
+    'ka'=>'ქართული',
 
     // source: http://en.wikipedia.org/wiki/List_of_ISO_639-1_codes
 );

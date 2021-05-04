@@ -120,8 +120,7 @@
 		'delivery'   => $btr->general_shipping,
 		'payment'    => $btr->order_payment_selected,
 		'managers'   => $btr->left_managers_title,
-        'languages'  => $btr->left_languages_title,
-		'license'    => $btr->left_license_title
+        'languages'  => $btr->left_languages_title
 	]}
 	<div class="row">
         <div class="col-lg-12 col-md-12">

@@ -73,6 +73,7 @@ class ProductView extends View
 			$temp_options[$option->feature_id] = new stdClass;         	 
 				$temp_options[$option->feature_id]->feature_id = $option->feature_id;
 				$temp_options[$option->feature_id]->name = $option->name;
+				$temp_options[$option->feature_id]->translit = $option->translit;
 				$temp_options[$option->feature_id]->values[] = $option->value;   
 			}
           	 
@@ -84,7 +85,10 @@ class ProductView extends View
 		if(!empty($product->features)){
             foreach($product->features as &$f){
                 $feature = $this->features->get_feature(intval($f->feature_id));
-                    $f->is_color = $feature->is_color; 
+                    $f->is_color = $feature->is_color;
+					$f->in_filter = $feature->in_filter;
+					$f->url_in_product = $feature->url_in_product;
+					$f->url = $feature->url;
             }
         }
 	

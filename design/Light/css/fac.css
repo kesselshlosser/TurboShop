@@ -1,10 +1,3 @@
-/*!
- * Font Awesome Controls
- * fac.css
- * Copyright Maxwel D'souza
- * MIT Licence
- */
-
 .fac {
     -webkit-user-select: none;
     -moz-user-select: none;
@@ -30,7 +23,7 @@
 .fac > a:before,
 .fac > a:after {
     font-family: 'Font Awesome 5 Free', 'Font Awesome 5 Brands';
-    font-weight: 100;
+    font-weight: 600;
 	font-size: 1.1rem;
     position:absolute;
     left:0;
@@ -50,7 +43,7 @@
 /********* Colors ***********/
 .fac-primary > a:before,
 .fac-primary > a:after {
-    color: #007bff;
+    color: #dfe0e1;
 }
 /********* Controls ***********/
 
@@ -60,8 +53,10 @@
 .fac-checkbox > a:focus:after {
     content: "\f14a"; /* active */
 	font-weight: 600;
+	color: #007bff;
 }
 .fac-checkbox > a.selected:after {
     content: "\f14a"; /* active */
 	font-weight: 600;
+	color: #007bff;
 }

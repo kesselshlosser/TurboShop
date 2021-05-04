@@ -99,6 +99,9 @@ class Products extends Turbo
 
 		if(isset($filter['visible']))
 			$visible_filter = $this->db->placehold('AND p.visible=?', intval($filter['visible']));
+		
+		$currency = $this->money->get_currencies(array('enabled'=>1));
+        $currency = reset($currency);
 
  		if(!empty($filter['sort']))
 			switch ($filter['sort'])
@@ -119,12 +122,12 @@ class Products extends Turbo
 		   
 				// по цене Низкие > Высокие
 				case 'price':
-				$order = '(SELECT pv.price FROM __variants pv WHERE (pv.stock IS NULL OR pv.stock>0) AND p.id = pv.product_id AND pv.position=(SELECT MIN(position) FROM __variants WHERE (stock>0 OR stock IS NULL) AND product_id=p.id LIMIT 1) LIMIT 1)';
+				$order = '(SELECT IF((pv.currency_id !='.$currency->id.' AND pv.currency_id > 0), (pv.price*(SELECT rate_to FROM __currencies AS c WHERE c.id =pv.currency_id)/(SELECT rate_from FROM __currencies AS c WHERE c.id = pv.currency_id)), pv.price)  FROM __variants pv WHERE (pv.stock IS NULL OR pv.stock>0) AND p.id = pv.product_id AND pv.position=(SELECT MIN(position) FROM __variants WHERE (stock>0 OR stock IS NULL) AND product_id=p.id LIMIT 1) LIMIT 1)';
 				break;
 		   
 				// по цене Высокие < Низкие
 				case 'price_desc':
-				$order = '(SELECT pv.price FROM __variants pv WHERE (pv.stock IS NULL OR pv.stock>0) AND p.id = pv.product_id AND pv.position=(SELECT MIN(position) FROM __variants WHERE (stock>0 OR stock IS NULL) AND product_id=p.id LIMIT 1) LIMIT 1) DESC';
+				$order = '(SELECT IF((pv.currency_id !='.$currency->id.' AND pv.currency_id > 0), (pv.price*(SELECT rate_to FROM __currencies AS c WHERE c.id =pv.currency_id)/(SELECT rate_from FROM __currencies AS c WHERE c.id = pv.currency_id)), pv.price)  FROM __variants pv WHERE (pv.stock IS NULL OR pv.stock>0) AND p.id = pv.product_id AND pv.position=(SELECT MIN(position) FROM __variants WHERE (stock>0 OR stock IS NULL) AND product_id=p.id LIMIT 1) LIMIT 1) DESC';
 				break;
 		   
 				case 'created':
@@ -168,8 +171,8 @@ class Products extends Turbo
             foreach($filter['features'] as $feature=>$value)
                 $features_filter .= $this->db->placehold('AND p.id in (SELECT product_id FROM __options WHERE feature_id=? AND translit in(?@) ) ', $feature, (array)$value);
                 
-        if(!empty($filter['min_price']) && !empty($filter['max_price']))
-			$prices = $this->db->placehold('AND p.id in(SELECT v.product_id FROM __variants v WHERE v.price >= ? AND v.price <= ? AND v.product_id = p.id)', intval($filter['min_price']), intval($filter['max_price']));
+		if(!empty($filter['min_price']) && !empty($filter['max_price']))
+			$prices = $this->db->placehold('AND p.id in(SELECT v.product_id FROM __variants v WHERE IF((v.currency_id !='.$currency->id.' AND v.currency_id > 0), (v.price*(SELECT rate_to FROM __currencies AS c WHERE c.id =v.currency_id)/(SELECT rate_from FROM __currencies AS c WHERE c.id = v.currency_id)), v.price) >= ? AND IF((v.currency_id !='.$currency->id.' AND v.currency_id > 0), (v.price*(SELECT rate_to FROM __currencies AS c WHERE c.id =v.currency_id)/(SELECT rate_from FROM __currencies AS c WHERE c.id = v.currency_id)), v.price) <= ? AND v.product_id = p.id)', intval($filter['min_price']), intval($filter['max_price']));
         
         $lang_sql = $this->languages->get_query(array('object'=>'product'));
 		
@@ -318,9 +321,12 @@ class Products extends Turbo
             foreach($filter['features'] as $feature=>$value)
                 $features_filter .= $this->db->placehold('AND p.id in (SELECT product_id FROM __options WHERE feature_id=? AND translit in(?@) ) ', $feature, (array)$value);
         
-        if(!empty($filter['min_price']) && !empty($filter['max_price']))
-			$prices = $this->db->placehold('AND p.id in(SELECT v.product_id FROM __variants v WHERE v.price >= ? AND v.price <= ? AND v.product_id = p.id)', intval($filter['min_price']), intval($filter['max_price']));
-        
+        $currency = $this->money->get_currencies(array('enabled'=>1));
+        $currency = reset($currency);
+
+		if(!empty($filter['min_price']) && !empty($filter['max_price']))
+			$prices = $this->db->placehold('AND p.id in(SELECT v.product_id FROM __variants v WHERE IF((v.currency_id !='.$currency->id.' AND v.currency_id > 0), (v.price*(SELECT rate_to FROM __currencies AS c WHERE c.id =v.currency_id)/(SELECT rate_from FROM __currencies AS c WHERE c.id = v.currency_id)), v.price) >= ? AND IF((v.currency_id !='.$currency->id.' AND v.currency_id > 0), (v.price*(SELECT rate_to FROM __currencies AS c WHERE c.id =v.currency_id)/(SELECT rate_from FROM __currencies AS c WHERE c.id = v.currency_id)), v.price) <= ? AND v.product_id = p.id)', intval($filter['min_price']), intval($filter['max_price']));
+				
         $lang_sql = $this->languages->get_query(array('object'=>'product'));
 		
 		$query = "SELECT count(distinct p.id) as count

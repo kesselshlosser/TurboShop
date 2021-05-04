@@ -32,6 +32,7 @@ class Turbo
 		'cart'                  => 'Cart',
 		'image'                 => 'Image',
 		'import'                => 'Import',
+		'reportstat'            => 'ReportStat',
 		'delivery'              => 'Delivery',
 		'payment'               => 'Payment',
 		'orders'                => 'Orders',

@@ -92,6 +92,18 @@
                                     </div>
                                 </div>
                             </div>
+							 <div class="col-lg-6 col-md-6 mt-q">
+                                <div class="heading_label boxes_inline">{$btr->feature_url_in_product|escape}</div>
+                                <div class="boxes_inline">
+                                    <div class="okay_switch clearfix">
+                                        <label class="switch switch-default">
+                                            <input class="switch-input" name="url_in_product" value='1' type="checkbox" {if $feature->url_in_product}checked=""{/if}/>
+                                            <span class="switch-label"></span>
+                                            <span class="switch-handle"></span>
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                     <div class="col-lg-2 col-md-3 col-sm-12">

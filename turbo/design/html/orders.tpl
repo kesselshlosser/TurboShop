@@ -59,7 +59,7 @@
 <div class="boxed fn_toggle_wrap">
 	{if $orders}
 	<div class="row">
-		<div class="col-lg-12 col-md-12 ">
+		<div class="col-lg-12 col-md-12">
 			<div class="hidden-md-up">
 				<div class="row mb-1">
 					<div class=" col-md-6 col-sm-12">
@@ -258,9 +258,7 @@
 													<div class="purchases_bodyng purchases_table_orders_num">{$purchase@iteration}</div>
 													<div class="purchases_bodyng purchases_table_orders_sku">{$purchase->sku|default:"&mdash;"}</div>
 													<div class="purchases_bodyng purchases_table_orders_name">
-														{$purchase->product_name|escape}
-                                                        {if $purchase->variant_color}({$purchase->variant_color|escape}){/if}
-														{if $purchase->variant_name}({$purchase->variant_name|escape}){/if}
+														{$purchase->product_name|escape} {if $purchase->variant_color}/ {$purchase->variant_color|escape}{/if} {if $purchase->variant_name}/ {$purchase->variant_name|escape}{/if}
 													</div>
 													<div class="purchases_bodyng purchases_table_orders_price">{$purchase->price|convert} {$currency->sign|escape}</div>
 													<div class="purchases_bodyng purchases_table_orders_unit"> {$purchase->amount}{$settings->units|escape}</div>

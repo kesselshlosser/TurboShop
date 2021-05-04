@@ -40,6 +40,7 @@ class Comments extends Turbo
         $articles_join = '';
 		$products_fields = '';
         $products_join = '';
+		$ip = '';
 		
         if(!empty($filter['type']))
            if($filter['type'] == 'blog')
@@ -62,7 +63,7 @@ class Comments extends Turbo
 				$articles_fields = ', a.url, '.$px.'.name article';
                 $articles_join = 'INNER JOIN __articles a ON c.object_id=a.id '.$lang_sql->join.'';
             }
-		
+			
 		if(!empty($filter['type']))
            if($filter['type'] == 'product')
             {

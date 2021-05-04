@@ -25,7 +25,7 @@
 			<a itemprop="item" href="{$lang_link}"><span itemprop="name">{$lang->home}</span></a>
 			<meta itemprop="position" content="{$level++}" />
 		</li>
-		{if $page}
+		{if $page && !$category}
 			<li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem" class="breadcrumb-item active" aria-current="page">
 				<a itemprop="item" href="{$lang_link}{$page->url}"><span itemprop="name">{$page->header|escape}</span></a>
 				<meta itemprop="position" content="{$level++}" />
@@ -47,6 +47,12 @@
 				<a itemprop="item" href="{$lang_link}catalog/{$cat->url}/{$brand->url}"><span itemprop="name">{$brand->name|escape}</span></a>
 					<meta itemprop="position" content="{$level++}" />
 				</li>
+			{/if}
+			{if $page}
+			<li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem" class="breadcrumb-item active" aria-current="page">
+				<a itemprop="item" href="{$lang_link}{$page->url}"><span itemprop="name">{$page->header|escape}</span></a>
+				<meta itemprop="position" content="{$level++}" />
+			</li>
 			{/if}
         {elseif $brand}
 			<li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem" class="breadcrumb-item active" aria-current="page">

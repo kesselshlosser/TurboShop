@@ -15,7 +15,7 @@ class Translations extends Turbo
     public function init_translations() 
 	{
         $vars = array();
-        $lang_label = $_SESSION['lang'] ? $_SESSION['lang'] : $this->settings->lang_label;
+        @$lang_label = $_SESSION['lang'] ? $_SESSION['lang'] : $this->settings->lang_label;
         $language   = $this->languages->languages(array('id'=>$this->languages->lang_id));
         if (!empty($language)) 
 		{

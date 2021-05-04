@@ -30,7 +30,7 @@ class Features extends Turbo
 		$lang_sql = $this->languages->get_query(array('object'=>'feature'));
 		
 		// Выбираем свойства
-		$query = $this->db->placehold("SELECT f.id, f.name, f.position, f.in_filter, f.url, f.is_color, ".$lang_sql->fields." FROM __features AS f ".$lang_sql->join."
+		$query = $this->db->placehold("SELECT f.id, f.name, f.position, f.in_filter, f.url, f.url_in_product, f.is_color, ".$lang_sql->fields." FROM __features AS f ".$lang_sql->join."
 									WHERE 1
 									$category_id_filter $in_filter_filter $id_filter ORDER BY f.position");
 		$this->db->query($query);
@@ -48,7 +48,7 @@ class Features extends Turbo
 		
 		$lang_sql = $this->languages->get_query(array('object'=>'feature'));
 		
-		$query = $this->db->placehold("SELECT f.id, f.name, f.position, f.in_filter, f.url, f.is_color, ".$lang_sql->fields." FROM __features f ".$lang_sql->join." WHERE $where LIMIT 1");
+		$query = $this->db->placehold("SELECT f.id, f.name, f.position, f.in_filter, f.url, f.url_in_product, f.is_color, ".$lang_sql->fields." FROM __features f ".$lang_sql->join." WHERE $where LIMIT 1");
 		$this->db->query($query);
 		return $this->db->result();
 	}

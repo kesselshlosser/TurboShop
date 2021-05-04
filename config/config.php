@@ -21,7 +21,7 @@ db_prefix = "t_";
 db_charset = "UTF8";
 
 ;Режим SQL
-db_sql_mode = "";
+db_sql_mode = "NO_ZERO_DATE,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION";
 
 ;Смещение часового пояса
 ;db_timezone = "+02:00";

@@ -486,6 +486,9 @@ class ProductAdmin extends Turbo
 			$this->design->assign('features', $features);
 		}
 		
+		// Все валюты
+		$this->design->assign('currencies', $this->money->get_currencies(array('enabled'=>1)));
+		
  	  	return $this->design->fetch('product.tpl');
 	}
 }

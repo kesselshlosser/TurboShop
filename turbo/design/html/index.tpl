@@ -404,7 +404,7 @@
 						</li>
 						{/if}
 						{if in_array('stats', $manager->permissions)}
-						<li class="{if in_array($smarty.get.module, array("StatsAdmin"))}open active{/if}  fn_item_sub_switch nav-dropdown">
+						<li class="{if in_array($smarty.get.module, array("StatsAdmin","ReportStatsAdmin","CategoryStatsAdmin"))}open active{/if}  fn_item_sub_switch nav-dropdown">
 							<a class="nav-link fn_item_switch nav-dropdown-toggle" href="javascript:;">
 								<span class="left_pages title">{$btr->left_stats|escape}</span>
 								<span class="icon-thumbnail">
@@ -419,6 +419,22 @@
 											<i class="icon-pie-chart icons font-lg d-block mt-4"></i> 
 										</span>
 										<span class="left_multiimport_title title">{$btr->stats_orders|escape}</span>
+									</a>
+								</li>
+								<li {if in_array($smarty.get.module, array("ReportStatsAdmin"))}class="active"{/if}>
+									<a class="nav-link" href="index.php?module=ReportStatsAdmin">
+										<span class="icon-thumbnail">
+											<i class="icon-chart icons font-lg d-block mt-4"></i> 
+										</span>
+										<span class="left_multiimport_title title">{$btr->left_products_stat_title|escape}</span>
+									</a>
+								</li>
+								<li {if in_array($smarty.get.module, array("CategoryStatsAdmin"))}class="active"{/if}>
+									<a class="nav-link" href="index.php?module=CategoryStatsAdmin">
+										<span class="icon-thumbnail">
+											<i class="icon-list icons font-lg d-block mt-4"></i> 
+										</span>
+										<span class="left_multiimport_title title">{$btr->left_categories_stat_title|escape}</span>
 									</a>
 								</li>
 							</ul>
@@ -660,7 +676,7 @@
 								{/if}
 							</span>
 							<div class="notification_toggle ui_sub_menu--right-arrow">
-								{if $new_comments_counter || $new_callbacks_counter || $new_feedbacks_counter}
+								{if $new_comments_counter || $new_callbacks_counter || $new_feedbacks_counter || $new_subscribes_counter}
 								{if in_array('comments', $manager->permissions)}
 								{if $new_comments_counter > 0}
 								<div class="notif_item">

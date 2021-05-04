@@ -6,13 +6,24 @@ This template is responsible for the general appearance of pages without a centr
 <html {if $language->label}lang="{$language->label|escape}"{/if}>
 <head>
 	<base href="{$config->root_url}/"/>
+	{if $page}
+	<title>{($meta_title|default:$auto_meta->title)|escape}</title>
+	{else}
 	<title>{($meta_title|default:$auto_meta->title)|escape}{$filter_meta->title|escape}</title>
+	{/if}
 	
 	{* Meta tags *}
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	
+	{if $page}
+	<meta name="description" content="{($meta_description|default:$auto_meta->description)|escape}" />
+	<meta name="keywords" content="{($meta_keywords|default:$auto_meta->keywords)|escape}" />
+	{else}
 	<meta name="description" content="{($meta_description|default:$auto_meta->description)|escape}{$filter_meta->description|escape}" />
 	<meta name="keywords" content="{($meta_keywords|default:$auto_meta->keywords)|escape}{$filter_meta->keywords|escape}" />
+	{/if}
+	
 	<meta name="author" content="Turbo CMS">
 	<meta name="generator" content="Turbo CMS">
 	

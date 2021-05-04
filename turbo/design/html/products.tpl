@@ -161,9 +161,13 @@
                                 </div>
                                 <div class="turbo_list_boding turbo_list_price">
                                     <div class="input-group">
-                                        <input class="form-control {if $product->variants[0]->compare_price > 0}text_warning{/if}" type="text" name="price[{$product->variants[0]->id}]" value="{$product->variants[0]->price}">
+                                        <input class="form-control {if $product->variants[0]->compare_price > 0}text_warning{/if}" type="text" name="price[{$product->variants[0]->id}]" value="{$product->variants[0]->oprice}">
                                         <span class="input-group-addon">
-                                            {$currency->sign}
+                                            {if isset($currencies[$product->variants[0]->currency_id])}
+												{$currencies[$product->variants[0]->currency_id]->sign|escape}
+											{else}
+												{$currency->sign}
+											{/if}
                                         </span>
                                     </div>
                                 </div>
@@ -233,9 +237,13 @@
                                     </div>
                                     <div class="turbo_list_boding turbo_list_price">
                                         <div class="input-group">
-                                            <input class="form-control {if $product->variants[0]->compare_price > 0}text_warning{/if}" type="text" name="price[{$variant->id}]" value="{$variant->price}">
+                                            <input class="form-control {if $product->variants[0]->compare_price > 0}text_warning{/if}" type="text" name="price[{$variant->id}]" value="{$variant->oprice}">
                                             <span class="input-group-addon">
-                                                {$currency->sign}
+												{if isset($currencies[$variant->currency_id])}
+													{$currencies[$variant->currency_id]->sign|escape}
+												{else}
+													{$currency->sign}
+												{/if}
                                             </span>
                                         </div>
                                     </div>

@@ -2,12 +2,12 @@
 
 require_once('../api/Turbo.php');
 
-$filename = $_GET['file'];
-$is_category = $_GET['is_category'];
-$is_article = $_GET['is_article'];
-$is_post = $_GET['is_post'];
-$is_brands = $_GET['is_brands'];
-$is_banners = $_GET['is_banners'];
+@$filename = $_GET['file'];
+@$is_category = $_GET['is_category'];
+@$is_article = $_GET['is_article'];
+@$is_post = $_GET['is_post'];
+@$is_brands = $_GET['is_brands'];
+@$is_banners = $_GET['is_banners'];
 
 $turbo = new Turbo();
 
