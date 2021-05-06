@@ -13,8 +13,8 @@ class FeatureAdmin extends Turbo
 			$feature->name = $this->request->post('name');
 			$feature->in_filter = intval($this->request->post('in_filter'));
 			$feature->is_color = intval($this->request->post('is_color'));
+			$feature->url_in_product = intval($this->request->post('url_in_product'));
 			$feature_categories = $this->request->post('feature_categories');
-			$feature->url_in_product = $this->request->post('url_in_product');
 			$feature->url = $this->request->post('url');
 			$feature->url = preg_replace("/[\s]+/ui", '', $feature->url);
             $feature->url = strtolower(preg_replace("/[^0-9a-z]+/ui", '', $feature->url));
