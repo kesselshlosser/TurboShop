@@ -2722,7 +2722,11 @@ INSERT INTO `t_settings` (`setting_id`, `name`, `value`) VALUES
 (42, 'image_sizes', '55x55|110x110|90x90|240x240|570x570|800x800w|300x300|95x95|330x300|500x500|100x100|900x350|35x35|400x300|300x120|130x130|150x150|170x170|116x116|75x23|40x40|700x700|750x750|750x300|750x467|700x467|250x120|50x50|700x300|120x120'),
 (43, 'comments_tree_blog', 'on'),
 (44, 'comments_tree_articles', 'on'),
-(45, 'lastModifyPosts', '2021-01-16 22:04:47');
+(45, 'lastModifyPosts', '2021-01-16 22:04:47'),
+(46, 'chat_viber', '123456789'),
+(47, 'chat_whats_app', '123456789'),
+(48, 'chat_telegram', 'test'),
+(49, 'chat_facebook', 'test');
 
 -- --------------------------------------------------------
 
@@ -2750,7 +2754,7 @@ INSERT INTO `t_settings_lang` (`name`, `lang_id`, `value`) VALUES
 ('company_name', 2, 'Turbo CMS'),
 ('notify_from_name', 2, 'Admin'),
 ('site_name', 2, 'Online store Turbo Shop'),
-('units', 2, 'pcs'),
+('units', 2, 'pc'),
 ('weight_units', 2, 'g'),
 ('company_name', 3, 'Turbo CMS'),
 ('notify_from_name', 3, 'Адмін'),
@@ -3001,7 +3005,8 @@ INSERT INTO `t_translations` (`id`, `template`, `in_config`, `label`, `lang_ru`,
 (222, '', 0, 'email_order_number_s', 'Номер заказа', 'Order number', 'Номер замовлення'),
 (223, '', 0, 'general_payment', 'Оплата', 'Payment', 'Оплата'),
 (224, '', 0, 'password_remind_title', 'Восстановление пароля', 'Password recovery', 'Відновлення пароля'),
-(225, '', 0, 'option', 'Вариант', 'Option', 'Варіант');
+(225, '', 0, 'option', 'Вариант', 'Option', 'Варіант'),
+(227, '', 0, 'to_contact_us', 'Связаться с нами', 'To contact us', 'Зв\'язатися з нами');
 
 -- --------------------------------------------------------
 
@@ -3571,7 +3576,7 @@ ALTER TABLE `t_categories`
 -- AUTO_INCREMENT для таблицы `t_comments`
 --
 ALTER TABLE `t_comments`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT для таблицы `t_coupons`
@@ -3685,7 +3690,7 @@ ALTER TABLE `t_seo`
 -- AUTO_INCREMENT для таблицы `t_settings`
 --
 ALTER TABLE `t_settings`
-  MODIFY `setting_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=46;
+  MODIFY `setting_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=50;
 
 --
 -- AUTO_INCREMENT для таблицы `t_subscribes`
@@ -3697,7 +3702,7 @@ ALTER TABLE `t_subscribes`
 -- AUTO_INCREMENT для таблицы `t_translations`
 --
 ALTER TABLE `t_translations`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=227;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=228;
 
 --
 -- AUTO_INCREMENT для таблицы `t_users`
@@ -3711,4 +3716,3 @@ ALTER TABLE `t_users`
 ALTER TABLE `t_variants`
   MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=80;
 COMMIT;
-

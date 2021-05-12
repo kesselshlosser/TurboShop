@@ -208,5 +208,6 @@ INSERT INTO `t_translations` (`id`, `template`, `in_config`, `label`, `lang_ru`,
 ('222','','0','email_order_number_s','Номер заказа','Order number','Номер замовлення'),
 ('223','','0','general_payment','Оплата','Payment','Оплата'),
 ('224','','0','password_remind_title','Восстановление пароля','Password recovery','Відновлення пароля'),
-('225','','0','option','Вариант','Option','Варіант');
+('225','','0','option','Вариант','Option','Варіант'),
+('227','','0','to_contact_us','Связаться с нами','To contact us','Зв\'язатися з нами');
 

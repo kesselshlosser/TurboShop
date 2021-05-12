@@ -293,7 +293,7 @@
 						</li>
 						{/if}
 						{if in_array('comments', $manager->permissions) || in_array('feedbacks', $manager->permissions) || in_array('callbacks', $manager->permissions) || in_array('subscribes', $manager->permissions)}
-						<li class="{if in_array($smarty.get.module, array("CommentsAdmin","FeedbacksAdmin","SubscribesAdmin","CallbacksAdmin"))}open active{/if} fn_item_sub_switch nav-dropdown">
+						<li class="{if in_array($smarty.get.module, array("CommentsAdmin","CommentAdmin","FeedbacksAdmin","SubscribesAdmin","CallbacksAdmin"))}open active{/if} fn_item_sub_switch nav-dropdown">
 							<a class="nav-link fn_item_switch nav-dropdown-toggle" href="javascript:;">
 								<span class="left_comments title">{$btr->general_feedback|escape}</span>
 								<span class="icon-thumbnail">
@@ -304,7 +304,7 @@
 							</a>
 							<ul class="fn_submenu_toggle submenu">
 								{if in_array('comments', $manager->permissions)}
-								<li {if in_array($smarty.get.module, array("CommentsAdmin"))}class="active"{/if}>
+								<li {if in_array($smarty.get.module, array("CommentsAdmin","CommentAdmin"))}class="active"{/if}>
 									<a class="nav-link" href="index.php?module=CommentsAdmin">
 										<span class="icon-thumbnail">
 											<i class="icon-bubbles  icons font-lg d-block mt-4"></i>  
@@ -351,7 +351,7 @@
 						</li>
 						{/if}
 						{if in_array('import', $manager->permissions) || in_array('export', $manager->permissions) || in_array('backup', $manager->permissions)}
-						<li class="{if in_array($smarty.get.module, array("ImportAdmin","ExportAdmin","BackupAdmin","ClearAdmin"))}open active{/if}   fn_item_sub_switch nav-dropdown">
+						<li class="{if in_array($smarty.get.module, array("ImportAdmin","ImportYmlAdmin","ExportAdmin","BackupAdmin","ClearAdmin"))}open active{/if}   fn_item_sub_switch nav-dropdown">
 							<a class="nav-link fn_item_switch nav-dropdown-toggle" href="javascript:;">
 								<span class="left_auto title">{$btr->general_automation|escape}</span>
 								<span class="icon-thumbnail">
@@ -364,9 +364,19 @@
 								<li {if in_array($smarty.get.module, array("ImportAdmin"))}class="active"{/if}>
 									<a class="nav-link" href="index.php?module=ImportAdmin">
 										<span class="icon-thumbnail">
-											<i class="icon-arrow-down-circle  icons font-lg d-block mt-4"></i> 
+											<i class="icon-arrow-down-circle icons font-lg d-block mt-4"></i> 
 										</span>
 										<span class="left_import_title title">{$btr->left_import_title|escape}</span>
+									</a>
+								</li>
+								{/if}
+								{if in_array('import', $manager->permissions)}
+								<li {if in_array($smarty.get.module, array("ImportYmlAdmin"))}class="active"{/if}>
+									<a class="nav-link" href="index.php?module=ImportYmlAdmin">
+										<span class="icon-thumbnail">
+											<i class="icon-action-undo icons font-lg d-block mt-4"></i> 
+										</span>
+										<span class="left_import_title title">{$btr->yml_import_global|escape}</span>
 									</a>
 								</li>
 								{/if}

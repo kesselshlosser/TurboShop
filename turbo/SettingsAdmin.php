@@ -56,6 +56,11 @@ class SettingsAdmin extends Turbo
 			$this->settings->smart_resize = $this->request->post('smart_resize','boolean');
 			$this->settings->webp_support = $this->request->post('webp_support','boolean');
 			
+			$this->settings->chat_viber = $this->request->post('chat_viber');
+			$this->settings->chat_whats_app = $this->request->post('chat_whats_app');
+			$this->settings->chat_telegram = $this->request->post('chat_telegram');
+			$this->settings->chat_facebook = $this->request->post('chat_facebook');
+			
 			if($this->request->post('category_count')==1)
 				$this->settings->category_count = 1;
 			else

@@ -138,6 +138,46 @@
             </div>
         </div>
     </div>
+	<div class="row">
+        <div class="col-lg-12 col-md-12">
+            <div class="boxed fn_toggle_wrap">
+                <div class="heading_box">
+                    {$btr->general_messengers_settings|escape}
+                    <div class="toggle_arrow_wrap fn_toggle_card text-primary">
+                        <a class="btn-minimize" href="javascript:;" ><i class="fa fn_icon_arrow fa-angle-down"></i></a>
+                    </div>
+                </div>
+                <div class="toggle_body_wrap on fn_card">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="heading_label">Viber</div>
+                            <div class="mb-1">
+								 <input name="chat_viber" class="form-control" type="text" value="{$settings->chat_viber|escape}" placeholder="XXXXXXXXXXXX">
+                            </div>
+                        </div>
+						<div class="col-md-6">
+                            <div class="heading_label">WhatsApp</div>
+                            <div class="mb-1">
+								<input name="chat_whats_app" class="form-control" type="text" value="{$settings->chat_whats_app|escape}" placeholder="XXXXXXXXXXXX">
+                            </div>
+                        </div>
+						<div class="col-md-6">
+                            <div class="heading_label">Telegram</div>
+                            <div class="mb-1">
+								<input name="chat_telegram" class="form-control" type="text" value="{$settings->chat_telegram|escape}" placeholder="username">
+                            </div>
+                        </div>
+						<div class="col-md-6">
+                            <div class="heading_label">Facebook Messenger</div>
+                            <div class="mb-1">
+								<input name="chat_facebook" class="form-control" type="text" value="{$settings->chat_facebook|escape}" placeholder="username">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
     <div class="row">
         <div class="col-lg-12 col-md-12">
             <div class="boxed fn_toggle_wrap">

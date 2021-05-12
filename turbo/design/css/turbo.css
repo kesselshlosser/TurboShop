@@ -299,15 +299,15 @@ body:not(.top-nav) header.navbar {
     vertical-align: middle;
 }
 .turbo_list_heading a{
-    color: #02bcf2;
+    color: #9c9ea0;
     margin-left: 3px;
 }
 .turbo_list_heading .selected{
-    color: #0181a6;
+    color: #595a5b;
 }                              
 .turbo_list_heading a svg{
-    width: 18px;
-    height: 18px;
+    width: 15px;
+    height: 15px;
 }
 
 /************************************************************************* Links  */
@@ -662,37 +662,37 @@ a.link:hover{
     border-color: #6dc0f9;
 }
 .btn-outline-info{
-    color: #10cfbd;
+    color: #48b0f7;
     background-image: none;
     background-color: transparent;
-    border-color: #10cfbd;
+    border-color: #48b0f7;
 }
 .btn-outline-info:hover {
     color: #fff;
-    background-color: #10cfbd;
-    border-color: #10cfbd;
+    background-color: #48b0f7;
+    border-color: #48b0f7;
 }
 .btn-outline-info:focus{
     color: #fff;
-    background-color: #10cfbd;
-    border-color: #10cfbd;
+    background-color: #48b0f7;
+    border-color: #48b0f7;
 }
 .btn-outline-info:active{
     color: #fff;
-    background-color: #3fddff;
-    border-color: #3fddff;
+    background-color: #3a8fc8;
+    border-color: #3a8fc8;
 }
 .btn-outline-info:active:hover,
 .btn-outline-info:active:focus{
     color: #fff;
-    background-color: #3fddff;
-    border-color: #3fddff;
+    background-color: #6dc0f9;
+    border-color: #6dc0f9;
 }
 .btn-outline-info:disabled:focus{
-    border-color: #3fddff;
+    border-color: #6dc0f9;
 }
 .btn-outline-info:disabled:hover {
-    border-color: #3fddff;
+    border-color: #6dc0f9;
 }
 .btn_border_yellow{
     color: #f8d053;
@@ -3621,17 +3621,39 @@ body.menu-pin .menu_switch .menu_hamburger::after {
 }
 
 /************************************************************************* Comments.tpl  */
-.admin_note{
-    border-left: 5px solid #02bcf2;
-    padding: 0px 10px!important;
+.turbo_list .turbo_list_subcomment {
+    width: 23px;
 }
-.admin_note2{
-    border-bottom: none;
-    padding-bottom: 10px;
+.turbo_list .subcomments_level_1 .turbo_list_subcomment{
+    margin-left: 30px;
 }
-.turbo_list .turbo_list_comments_name.admin_note {
-    width: calc(100% - 280px);
-    margin-left: 20px;
+.turbo_list .subcomments_level_2 .turbo_list_subcomment{
+    margin-left: 60px;
+}
+.turbo_list .subcomments_level_3 .turbo_list_subcomment{
+    margin-left: 90px;
+}
+.turbo_list .turbo_list_boding.turbo_list_comments_name .admin a {
+    color: #000;
+    display: inline-block;
+    text-decoration: underline;
+}
+.turbo_list .turbo_list_boding.turbo_list_comments_name .admin a:hover{
+	text-decoration: none;
+}
+.turbo_list .turbo_list_boding.turbo_list_comments_name .comment_object {
+    color: #535c69;
+    display: inline-block;
+    text-decoration: underline;
+}
+.turbo_list .turbo_list_boding.turbo_list_comments_name .comment_object:hover {
+    color: #535c69;
+    text-decoration: none;
+}
+.comment_textarea{
+    width: 100%;
+    min-height: 160px;
+    resize: none;
 }
 
 /************************************************************************* Import.tpl  */
@@ -3640,6 +3662,11 @@ body.menu-pin .menu_switch .menu_hamburger::after {
 }
 .import_item{
     font-size: 12px;
+}
+.turbo_list .import_list_footer{
+    width: 100%;
+    height: 50px;
+    border-bottom: 1px solid #dfe2e5;
 }
 
 /************************************************************************* Export.tpl  */
