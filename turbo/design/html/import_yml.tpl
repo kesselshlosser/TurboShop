@@ -291,5 +291,6 @@
         }
 
         .ui-progressbar .ui-progressbar-value {margin: 0px; height: 100%;}
+		.ui-widget.ui-widget-content {background: #eef2f4; border: none;}
     </style>
 {/literal}

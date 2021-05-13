@@ -278,10 +278,16 @@ class ImportAjax extends Turbo
                     if ($category_id && $feature_value !== '') {
                         $this->db->query('SELECT f.id FROM __features f WHERE f.name=? LIMIT 1', $feature_name);
                         if (!$feature_id = $this->db->result('id'))
-                            $feature_id = $this->features->add_feature(array('name' => $feature_name));
+                            $feature_id = $this->features->add_feature(array('name' => $feature_name, 'url'=>$this->translit($feature_name)));
 
-                        $this->features->add_feature_category($feature_id, $category_id);
-                        $this->features->update_option($product_id, $feature_id, $feature_value);
+                        if (!empty($feature_value)) {
+                            $this->features->add_feature_category($feature_id, $category_id);
+                            while ($this->features->get_options(array('product_id' => $product_id, 'feature_id' => $feature_id)))
+                                $this->features->delete_option($product_id, $feature_id);
+                            $pos = 0;
+                            foreach (explode('|', $feature_value) as $f_value)
+                                $this->features->update_option($product_id, $feature_id, $f_value, $pos++);
+                        }
                     }
                 }
             }
