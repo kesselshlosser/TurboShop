@@ -272,7 +272,7 @@
 									<span class="list">
 										{assign var ='first_category' value=reset($product_categories)}
 										<div class="input-group">
-											<select name="categories[]" class="form-control fn_meta_categories" data-live-search="true">
+											<select name="categories[]" class="selectpicker form-control fn_meta_categories" data-live-search="true">
 												{function name=category_select level=0}
 													{foreach $categories as $category}
 														<option value='{$category->id}' {if $category->id == $selected_id}selected{/if} category_name='{$category->name|escape}'>{section name=sp loop=$level}-{/section} {$category->name|escape}</option>
@@ -688,7 +688,16 @@
 							{/if}
 						</p>
 					</div>
-					<input class="upload_file" name="files[]" placeholder='{$btr->general_select_file|escape}' type="file" multiple  accept="pdf/txt/doc/docx">
+					
+						<div class="input_file_container">
+							<input  class="file_upload input_file" name="files[]" placeholder='{$btr->general_select_file|escape}' type="file" multiple  accept="pdf/txt/doc/docx">
+							<label tabindex="0" for="my-file" class="input_file_trigger">
+								<svg width="20" height="17" viewBox="0 0 20 17"><path fill="currentcolor" d="M10 0l-5.2 4.9h3.3v5.1h3.8v-5.1h3.3l-5.2-4.9zm9.3 11.5l-3.2-2.1h-2l3.4 2.6h-3.5c-.1 0-.2.1-.2.1l-.8 2.3h-6l-.8-2.2c-.1-.1-.1-.2-.2-.2h-3.6l3.4-2.6h-2l-3.2 2.1c-.4.3-.7 1-.6 1.5l.6 3.1c.1.5.7.9 1.2.9h16.3c.6 0 1.1-.4 1.3-.9l.6-3.1c.1-.5-.2-1.2-.7-1.5z"></path></svg>
+								<span>{$btr->general_select_file|escape}</span>
+							</label>
+						</div>
+						<p class="input_file_return"></p>
+					
 				</div>
 			</div>
 		</div>
@@ -864,10 +873,13 @@ $(window).on("load", function() {
 	
 	// Add category
 	$('#product_categories .add').click(function() {
-		$("#product_categories .product_cats span.list:last").clone(false).appendTo('#product_categories .product_cats').fadeIn('slow').find("select[name*=categories]:last").focus();
+		var $orginal = $('#product_categories .product_cats span.list:last');
+		var $cloned = $orginal.clone();
+		$cloned.find('.bootstrap-select').replaceWith(function() { return $('select', this); })    
+		$cloned.find('.selectpicker').selectpicker('render'); 
+		$cloned.appendTo('#product_categories .product_cats');
 		$("#product_categories .product_cats span.list:last span.add").hide();
-		$("#product_categories .product_cats span.list:last span.delete").show();
-		return false;		
+		$("#product_categories .product_cats span.list:last span.delete").show();		
 	});
 	
 	// Delete category

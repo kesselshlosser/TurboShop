@@ -924,6 +924,27 @@
 					return false;
 				});
 			}
+			/* Input_file */
+			if($('.input_file').size()>0){
+				document.querySelector("html").classList.add('fn_input_file');
+				
+				var fileInput  = document.querySelector( ".input_file" ),
+				button     = document.querySelector( ".input_file_trigger" ),
+				the_return = document.querySelector(".input_file_return");
+				
+				button.addEventListener( "keydown", function( event ) {
+					if ( event.keyCode == 13 || event.keyCode == 32 ) {
+						fileInput.focus();
+					}
+				});
+				button.addEventListener( "click", function( event ) {
+					fileInput.focus();
+					return false;
+				});
+				fileInput.addEventListener( "change", function( event ) {
+					the_return.innerHTML = this.value;
+				});
+			}
 			/* Initializing the scrollbar */
 			if($('.scrollbar-inner').size()>0){
 				$('.scrollbar-inner').scrollbar();

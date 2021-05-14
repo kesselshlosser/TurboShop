@@ -31,7 +31,7 @@
     <input type=hidden name="session_id" value="{$smarty.session.id}">
     <div class="row">
         <div class="col-lg-6 col-md-12 pr-0">
-            <div class="boxed fn_toggle_wrap min_height_335px">
+            <div class="boxed fn_toggle_wrap">
                 <div class="heading_box">
                     {$btr->settings_general_options|escape}
                     <div class="toggle_arrow_wrap fn_toggle_card text-primary">
@@ -82,7 +82,7 @@
             </div>
         </div>
         <div class="col-lg-6 col-md-12">
-            <div class="boxed fn_toggle_wrap min_height_335px">
+            <div class="boxed fn_toggle_wrap">
                 <div class="heading_box">
                     {$btr->settings_notify_notifications|escape}
                     <div class="toggle_arrow_wrap fn_toggle_card text-primary">

@@ -5770,3 +5770,90 @@ div.colorPicker-swatch {height: 20px; width: 20px; border: 1px solid #2a2a2a; ma
     background: #f76c22;
     color: #ffffff;
 }
+.import_file{
+    -webkit-appearance: none;
+    color: #2c2c2c;
+    outline: 0;
+    height: 35px;
+    padding: 6px 12px;
+    line-height: normal;
+    font-size: 14px;
+    font-weight: normal;
+    vertical-align: middle;
+    min-height: 35px;
+    -webkit-transition: all 0.12s ease;
+    transition: all 0.12s ease;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+    border-radius: 2px;
+    -webkit-border-radius: 2px;
+    -moz-border-radius: 2px;
+    -webkit-transition: background 0.2s linear 0s;
+    transition: background 0.2s linear 0s;
+    display: block;
+    width: 100%;
+    position: relative;
+}
+.file_upload {
+    position: relative;
+    overflow: hidden;
+    width: 20%;
+    height: 30px;
+    background: url('../images/uploader.png') no-repeat;
+    -webkit-background-size: 30px;
+    background-size: 30px;
+    text-align: center;
+}
+.input_file_container {
+    position: relative;
+    width: 225px;
+}
+.fn_input_file .input_file_trigger {
+    display: inline-flex;
+    align-items: center;
+    padding: 10px 18px;
+    background: #2fc7f7;
+    color: #fff;
+    font-size: 14px;
+    transition: all .4s;
+    cursor: pointer;
+    font-weight: 600;
+    width: auto;
+    border-radius: 4px;
+}
+.fn_input_file .input_file_trigger svg{
+    margin-right: 10px;
+    width: 18px;
+}
+.fn_input_file .input_file {
+    position: absolute;
+    top: 0; left: 0;
+    width: 225px;
+    opacity: 0;
+    padding: 14px 0;
+    cursor: pointer;
+}
+.fn_input_file .input_file:hover + .input_file_trigger,
+.fn_input_file .input_file:focus + .input_file_trigger,
+.fn_input_file .input_file_trigger:hover,
+.fn_input_file .input_file_trigger:focus {
+    background: #3fddff;
+    color: #fff;
+}
+
+.input_file_return {
+    margin: 0;
+}
+.input_file_return:not(:empty) {
+    margin: 1em 0;
+}
+.fn_input_file .input_file_return {
+    font-style: italic;
+    font-size: .9em;
+    font-weight: bold;
+}
+.fn_input_file .input_file_return:not(:empty):before {
+    content: "Selected file: ";
+    font-style: normal;
+    font-weight: normal;
+}
