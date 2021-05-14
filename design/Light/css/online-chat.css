@@ -6,6 +6,10 @@ body.hide-cht-widget .chaty-widget.one_widget .chaty-widget-i:not(.no-tooltip):b
     left: auto;
     bottom: 150px;
     right: 15px;
+	opacity: 0;
+}
+#chaty-widget.show {
+    opacity: 1;
 }
 .widget-img {
     display: -webkit-box;
