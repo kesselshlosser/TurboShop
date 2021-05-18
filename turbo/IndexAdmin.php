@@ -7,6 +7,7 @@ class IndexAdmin extends Turbo
 {
 	// Соответсвие модулей и названий соответствующих прав
 	private $modules_permissions = array(
+		'DashboardAdmin'            => 'dashboard',
 		'ProductsAdmin'             => 'products',
 		'ProductAdmin'              => 'products',
 		'CategoriesAdmin'           => 'categories',
@@ -45,7 +46,6 @@ class IndexAdmin extends Turbo
 		'ExportAdmin'               => 'export',
 		'BackupAdmin'               => 'backup',
 		'ClearAdmin'                => 'clear',
-		'StatsAdmin'                => 'stats',
 		'ReportStatsAdmin'          => 'stats',
         'CategoryStatsAdmin'        => 'stats',
 		'ThemeAdmin'                => 'design',

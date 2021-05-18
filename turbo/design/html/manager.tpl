@@ -90,6 +90,7 @@
 		</div>
 	</div>
 	{$perms = [
+		'dashboard'  => $btr->dashboard_global,
 		'products'   => $btr->general_products,
 		'categories' => $btr->general_categories,
 		'brands'     => $btr->brands_brands,

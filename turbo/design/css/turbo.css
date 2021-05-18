@@ -278,6 +278,9 @@ body:not(.top-nav) header.navbar {
 .min_height_335px{
     min-height: 335px;
 }
+.min_height_467px {
+    min-height: 467px;
+}
 .hidden {
     display: none!important;
 }
@@ -5855,4 +5858,32 @@ div.colorPicker-swatch {height: 20px; width: 20px; border: 1px solid #2a2a2a; ma
     content: "Selected file: ";
     font-style: normal;
     font-weight: normal;
+}
+
+/* Dashboard */
+
+.boxed_dashboard{
+	margin-bottom: 0px;
+}
+.huge {
+    font-size: 50px;
+    line-height: normal;
+}
+.text-right {
+    text-align: right;
+}
+.panel-footer {
+    background: #FFF;
+    padding: 15px;
+    margin-bottom: 15px;
+}
+.pull-left {
+    float: left!important;
+}
+.pull-right {
+    float: right!important;
+}
+.chart {
+  width: 100%; 
+  min-height: 450px;
 }

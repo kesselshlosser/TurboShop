@@ -8,11 +8,11 @@
  *
  */
  
-require_once('Turbo.php');
+ require_once('Turbo.php');
 
 class Managers extends Turbo
 {	
-	public $permissions_list = array('products', 'categories', 'brands', 'features', 'orders', 'labels', 'callbacks',
+	public $permissions_list = array('dashboard', 'products', 'categories', 'brands', 'features', 'orders', 'labels', 'callbacks',
 		'users', 'groups', 'coupons', 'pages', 'menus', 'blog', 'comments', 'feedbacks', 'import', 'export', 'clear', 'articles',
 		'backup', 'stats', 'subscribes', 'design', 'banners', 'settings', 'seo', 'currency', 'delivery', 'payment', 'managers', 'languages');
 		

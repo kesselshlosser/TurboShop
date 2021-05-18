@@ -24,11 +24,11 @@
 	<script src="design/js/Sortable.js"></script>
 </head> 
 <body class="navbar-fixed {if $smarty.cookies.view !== 'fixed' && $is_mobile === false && $is_tablet === false}menu-pin{/if}">  
-	<a href="index.php?module=ProductsAdmin" id="fix_logo" class="hidden-lg-down"></a> 
+	<a href="index.php?module=DashboardAdmin" id="fix_logo" class="hidden-lg-down"></a> 
 	<nav id="admin_catalog" class="fn_left_menu">
 		<div id="mob_menu"></div>
 		<div class="sidebar_header">
-			<a class="logo_box" href="index.php?module=ProductsAdmin" class="">
+			<a class="logo_box" href="index.php?module=DashboardAdmin" class="">
 				<img src="design/images/logo_title.png" alt="TurboCMS"/>
 			</a>
 			{if $is_mobile === false && $is_tablet === false}
@@ -51,6 +51,16 @@
 			<div class="scrollbar-inner menu_items">
 				<div>
 					<ul class="menu_items">
+						{if in_array('dashboard', $manager->permissions)}
+						<li class="{if in_array($smarty.get.module, array("DashboardAdmin"))}open active{/if}">
+							<a class="nav-link" href="index.php?module=DashboardAdmin">
+								<span class="left_blog title">{$btr->dashboard_global|escape}</span>
+								<span class="icon-thumbnail">
+									{include file='svg_icon.tpl' svgId='home'}
+								</span>
+							</a>
+						</li>
+						{/if}
 						{if in_array('products', $manager->permissions) || in_array('categories', $manager->permissions) || in_array('brands', $manager->permissions) || in_array('features', $manager->permissions)}
 						<li class="{if in_array($smarty.get.module, array("ProductsAdmin","ProductAdmin","CategoriesAdmin","CategoryAdmin","BrandsAdmin","BrandAdmin","FeaturesAdmin","FeatureAdmin"))}open active{/if} fn_item_sub_switch nav-dropdown">
 							<a class="nav-link fn_item_switch nav-dropdown-toggle" href="javascript:;">
@@ -414,7 +424,7 @@
 						</li>
 						{/if}
 						{if in_array('stats', $manager->permissions)}
-						<li class="{if in_array($smarty.get.module, array("StatsAdmin","ReportStatsAdmin","CategoryStatsAdmin"))}open active{/if}  fn_item_sub_switch nav-dropdown">
+						<li class="{if in_array($smarty.get.module, array("ReportStatsAdmin","CategoryStatsAdmin"))}open active{/if}  fn_item_sub_switch nav-dropdown">
 							<a class="nav-link fn_item_switch nav-dropdown-toggle" href="javascript:;">
 								<span class="left_pages title">{$btr->left_stats|escape}</span>
 								<span class="icon-thumbnail">
@@ -423,14 +433,6 @@
 								<span class="arrow"></span>
 							</a>
 							<ul class="fn_submenu_toggle submenu">
-								<li {if in_array($smarty.get.module, array("StatsAdmin"))}class="active"{/if}>
-									<a class="nav-link" href="index.php?module=StatsAdmin">
-										<span class="icon-thumbnail">
-											<i class="icon-pie-chart icons font-lg d-block mt-4"></i> 
-										</span>
-										<span class="left_multiimport_title title">{$btr->stats_orders|escape}</span>
-									</a>
-								</li>
 								<li {if in_array($smarty.get.module, array("ReportStatsAdmin"))}class="active"{/if}>
 									<a class="nav-link" href="index.php?module=ReportStatsAdmin">
 										<span class="icon-thumbnail">
@@ -442,7 +444,7 @@
 								<li {if in_array($smarty.get.module, array("CategoryStatsAdmin"))}class="active"{/if}>
 									<a class="nav-link" href="index.php?module=CategoryStatsAdmin">
 										<span class="icon-thumbnail">
-											<i class="icon-list icons font-lg d-block mt-4"></i> 
+											<i class="icon-pie-chart icons font-lg d-block mt-4"></i> 
 										</span>
 										<span class="left_multiimport_title title">{$btr->left_categories_stat_title|escape}</span>
 									</a>
