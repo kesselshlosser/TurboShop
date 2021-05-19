@@ -107,7 +107,7 @@
 
 {if $orders_count}
 <div class="row">
-    <div class="col-xl-6 col-lg-12 col-md-12 pr-0">
+    <div class="col-lg-6 col-md-6 pr-0">
         <div class="boxed fn_toggle_wrap">
             <div class="heading_box">
                 {$btr->stats_orders|escape}
@@ -120,7 +120,7 @@
             </div>
         </div>
     </div>
-    <div class="col-xl-6 col-lg-12 col-md-12">
+    <div class="col-lg-6 col-md-6">
         <div class="boxed fn_toggle_wrap">
             <div class="heading_box">
                 {$btr->sales_statistics|escape}
@@ -136,7 +136,7 @@
 </div>
 
 <div class="row">
-    <div class="col-xl-6 col-lg-12 col-md-12 pr-0">
+    <div class="col-lg-6 col-md-6 pr-0">
         <div class="boxed fn_toggle_wrap">
             <div class="heading_box">
                 {$btr->statistics_number_of_orders|escape}
@@ -149,7 +149,7 @@
             </div>
         </div>
     </div>
-    <div class="col-xl-6 col-lg-12 col-md-12">
+    <div class="col-lg-6 col-md-6">
         <div class="boxed fn_toggle_wrap">
             <div class="heading_box">
                 {$btr->statistics_amount_of_orders|escape}
